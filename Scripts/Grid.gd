@@ -1,15 +1,41 @@
 extends VBoxContainer
 
-
+var Width = -1
+var Height = -1
 func _ready():
 	InitializeGrid()
 
 func InitializeGrid():
+	Width = len(get_children())
+	Height = len(get_child(0).get_children())
 	for row in range(0, len(get_children())):
 		for column in range(0, len(get_child(row).get_children())):
 			get_child(row).get_child(column).Setup(row, column)
-			get_child(row).get_child(column).connect("Slotted", Callable(self, "OnGemSlotted"))
+			get_child(row).get_child(column).connect("Slotted", Callable(self, "OnGemPlaced"))
 
+func IsPieceTheSameType(pieceA, pieceB):
+	return pieceA.GetGemType() == pieceB.GetGemType()
+
+func OnGemPlaced(gridPiece):
+	var left = null
+	if gridPiece.GetColumn() > 0:
+		var piece = get_child(gridPiece.GetRow()).get_child(gridPiece.GetColumn() - 1)
+		if piece.IsEmpty() == false:
+			if IsPieceTheSameType(gridPiece, piece) == false:
+				left = piece
+
+	var right = null
+	var up = null
+	var down = null
+
+
+	var data = {
+		"LEFT" : left,
+		"RIGHT" : right,
+		"UP" : up,
+		"DOWN" : down
+	}
+	gridPiece.ShowSwitchableAreas(data)
 
 func OnGemSlotted(gridPiece):
 	print(gridPiece.GetString() + " filled")

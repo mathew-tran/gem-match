@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://csufmob2i3gat"]
+[gd_scene load_steps=8 format=3 uid="uid://csufmob2i3gat"]
 
 [ext_resource type="Texture2D" uid="uid://bse58t3e4pmxi" path="res://Art/GridPiece.svg" id="1_v7jjj"]
 [ext_resource type="Script" path="res://Scripts/GridSquare.gd" id="2_1vr51"]
 [ext_resource type="Texture2D" uid="uid://bpvbmmv16f71l" path="res://Art/UI/select.svg" id="4_alu6x"]
 [ext_resource type="Texture2D" uid="uid://bhfepm0a6u04v" path="res://Art/Game/Pieces/Diamond.svg" id="4_aynx1"]
+[ext_resource type="PackedScene" uid="uid://v64lat60b010" path="res://Prefab/UI/SwitchIndicator.tscn" id="4_t8nlg"]
 [ext_resource type="Texture2D" uid="uid://u124j8bm6ktt" path="res://Art/UI/selectfail.svg" id="4_xd57q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fnb3r"]
@@ -28,6 +29,39 @@ offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_alu6x")
+
+[node name="SwitchRight" parent="." instance=ExtResource("4_t8nlg")]
+visible = false
+layout_mode = 0
+offset_left = 128.0
+offset_top = 48.0
+offset_right = 168.0
+offset_bottom = 88.0
+
+[node name="SwitchLeft" parent="." instance=ExtResource("4_t8nlg")]
+visible = false
+layout_mode = 0
+offset_top = 86.0
+offset_bottom = 126.0
+rotation = 3.14159
+
+[node name="SwitchDown" parent="." instance=ExtResource("4_t8nlg")]
+visible = false
+layout_mode = 0
+offset_left = 84.0
+offset_top = 126.0
+offset_right = 124.0
+offset_bottom = 166.0
+rotation = 1.57079
+
+[node name="SwitchUp" parent="." instance=ExtResource("4_t8nlg")]
+visible = false
+layout_mode = 0
+offset_left = 44.0
+offset_top = 2.0
+offset_right = 84.0
+offset_bottom = 42.0
+rotation = 4.71238
 
 [node name="HighlightFail" type="TextureRect" parent="."]
 visible = false

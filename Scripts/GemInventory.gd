@@ -21,7 +21,7 @@ func SlotNextGemPiece():
 	if len(Gems) > 0:
 		Gems[0].global_position = global_position + Vector2(16,16)
 		Gems[0].Setup()
-		Gems[0].connect("Placed", Callable(self, "OnGemPlaced"))
+		Gems[0].connect("Confirmed", Callable(self, "OnGemConfirmed"))
 		Gems.remove_at(0)
 		$Label.text = str(len(Gems) + 1)
 	else:
@@ -35,7 +35,7 @@ func SlotNextGemPiece():
 		Game.BroadcastGameOver(true)
 
 
-func OnGemPlaced(square):
+func OnGemConfirmed(square):
 	SlotNextGemPiece()
 
 func _ready():

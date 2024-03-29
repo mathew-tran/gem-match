@@ -7,6 +7,7 @@ var InitialPosition = Vector2.ZERO
 var GemType = Definitions.GEM_TYPE.DIAMOND
 
 signal Placed(square)
+signal Confirmed(square)
 
 func _ready():
 	Setup()
@@ -47,6 +48,9 @@ func _process(delta):
 				z_index = 0
 			else:
 				global_position = InitialPosition
+
+func ConfirmPlacement():
+	emit_signal("Confirmed", self)
 
 func GetSquare():
 	var areas = $Sprite2D/Area2D.get_overlapping_areas()
