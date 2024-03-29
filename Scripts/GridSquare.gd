@@ -4,10 +4,12 @@ var Row = -1
 var Column = -1
 var GemRef = null
 
-signal Slotted
+signal Slotted(square)
+signal Completed(square)
 
 func _ready():
 	add_to_group("GRIDPIECE")
+
 func GetRow():
 	return Row
 
@@ -41,45 +43,23 @@ func _on_area_2d_area_entered(area):
 	OnEnter()
 
 func ShowSwitchableAreas(data):
-	var nulls = 0
-	if data["LEFT"]:
-		$SwitchLeft.visible = true
-	else:
-		nulls += 1
-
-	if data["RIGHT"]:
-		$SwitchRight.visible = true
-	else:
-		nulls += 1
-
-	if data["UP"]:
-		$SwitchUp.visible = true
-	else:
-		nulls += 1
-
-	if data["DOWN"]:
-		$SwitchDown.visible = true
-	else:
-		nulls += 1
-	if nulls == 4:
-		GemRef.ConfirmPlacement()
+	var switchArea = get_tree().get_nodes_in_group("TRANSITION")
+	if switchArea:
+		switchArea[0].SetTransitionArrows(self, data)
 
 
-func HideHints():
-	$SwitchRight.visible = false
-	$SwitchLeft.visible = false
-	$SwitchDown.visible = false
-	$SwitchUp.visible = false
+
 
 func _on_area_2d_area_exited(area):
 	OnExit()
 
-func SlotInGem(gem):
+func SlotInGem(gem, type = "slot"):
 	gem.global_position = $GemPosition.global_position
 	$Highlight.visible = false
 	GemRef = gem
 	GemRef.SetCollision(false)
-	emit_signal("Slotted", self)
+	if type == "slot":
+		emit_signal("Slotted", self)
 
 func GetString():
 	return "Row: " + str(Row) +", Column: " + str(Column)

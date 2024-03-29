@@ -2,8 +2,15 @@ extends VBoxContainer
 
 var Width = -1
 var Height = -1
+
 func _ready():
 	InitializeGrid()
+	add_to_group("GRID")
+
+func CheckGrid():
+	for row in range(0, len(get_children())):
+		for column in range(0, len(get_child(row).get_children())):
+			OnSquareCheck(get_child(row).get_child(column))
 
 func InitializeGrid():
 	Width = len(get_children())
@@ -25,8 +32,25 @@ func OnGemPlaced(gridPiece):
 				left = piece
 
 	var right = null
+	if gridPiece.GetColumn() < Width - 1:
+		var piece = get_child(gridPiece.GetRow()).get_child(gridPiece.GetColumn() + 1)
+		if piece.IsEmpty() == false:
+			if IsPieceTheSameType(gridPiece, piece) == false:
+				right = piece
+
 	var up = null
+	if gridPiece.GetRow() > 0:
+		var piece = get_child(gridPiece.GetRow() - 1).get_child(gridPiece.GetColumn())
+		if piece.IsEmpty() == false:
+			if IsPieceTheSameType(gridPiece, piece) == false:
+				up = piece
+
 	var down = null
+	if gridPiece.GetRow() < Height - 1:
+		var piece = get_child(gridPiece.GetRow() + 1).get_child(gridPiece.GetColumn())
+		if piece.IsEmpty() == false:
+			if IsPieceTheSameType(gridPiece, piece) == false:
+				down = piece
 
 
 	var data = {
@@ -37,8 +61,7 @@ func OnGemPlaced(gridPiece):
 	}
 	gridPiece.ShowSwitchableAreas(data)
 
-func OnGemSlotted(gridPiece):
-	print(gridPiece.GetString() + " filled")
+func OnSquareCheck(gridPiece):
 	CheckRow(gridPiece)
 	CheckColumn(gridPiece)
 
