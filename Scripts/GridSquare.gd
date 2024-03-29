@@ -6,6 +6,8 @@ var GemRef = null
 
 signal Slotted
 
+func _ready():
+	add_to_group("GRIDPIECE")
 func GetRow():
 	return Row
 
@@ -27,11 +29,10 @@ func OnExit():
 	$HighlightFail.visible = false
 
 func _on_button_mouse_entered():
-	OnEnter()
+	pass
 
 func _on_button_mouse_exited():
-	OnExit()
-
+	pass
 
 func IsEmpty():
 	return GemRef == null

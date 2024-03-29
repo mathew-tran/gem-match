@@ -23,6 +23,17 @@ func SlotNextGemPiece():
 		Gems[0].Setup()
 		Gems[0].connect("Placed", Callable(self, "OnGemPlaced"))
 		Gems.remove_at(0)
+		$Label.text = str(len(Gems) + 1)
+	else:
+		await get_tree().process_frame
+		$Label.text = "EMPTY"
+		var grid = get_tree().get_nodes_in_group("GRIDPIECE")
+		for piece in grid:
+			if piece.IsEmpty() == false:
+				Game.BroadcastGameOver(false)
+				return
+		Game.BroadcastGameOver(true)
+
 
 func OnGemPlaced(square):
 	SlotNextGemPiece()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bom72s7pp1eku"]
+[gd_scene load_steps=8 format=3 uid="uid://bom72s7pp1eku"]
 
 [ext_resource type="PackedScene" uid="uid://csufmob2i3gat" path="res://Prefab/GridSquare.tscn" id="1_dmebl"]
 [ext_resource type="Texture2D" uid="uid://bj3tgbu3qwr08" path="res://Art/BG.svg" id="1_o2s0i"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c00wyavasgy5s" path="res://Art/cloud2.svg" id="3_ltya5"]
 [ext_resource type="Script" path="res://Scripts/Grid.gd" id="4_6u7sk"]
 [ext_resource type="PackedScene" uid="uid://cixtxt26wjlem" path="res://Prefab/RemainingSlot.tscn" id="5_kaftd"]
+[ext_resource type="PackedScene" uid="uid://4nigwiqu5pha" path="res://Prefab/UI/GameOverScreen.tscn" id="7_vjuip"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -304,3 +305,6 @@ offset_left = 218.0
 offset_top = 497.0
 offset_right = 378.0
 offset_bottom = 657.0
+
+[node name="GameOverScreen" parent="CanvasLayer" instance=ExtResource("7_vjuip")]
+visible = false
