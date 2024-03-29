@@ -1,0 +1,161 @@
+[gd_scene load_steps=3 format=3 uid="uid://bom72s7pp1eku"]
+
+[ext_resource type="PackedScene" uid="uid://csufmob2i3gat" path="res://Prefab/GridSquare.tscn" id="1_dmebl"]
+[ext_resource type="Texture2D" uid="uid://bj3tgbu3qwr08" path="res://Art/BG.svg" id="1_o2s0i"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.388235, 0.388235, 0.388235, 1)
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_o2s0i")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -394.0
+offset_top = -394.0
+offset_right = 394.0
+offset_bottom = 394.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="GridSquare" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare2" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare3" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare4" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare5" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare6" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="GridSquare" parent="CanvasLayer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare2" parent="CanvasLayer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare3" parent="CanvasLayer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare4" parent="CanvasLayer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare5" parent="CanvasLayer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare6" parent="CanvasLayer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="GridSquare" parent="CanvasLayer/VBoxContainer/HBoxContainer3" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare2" parent="CanvasLayer/VBoxContainer/HBoxContainer3" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare3" parent="CanvasLayer/VBoxContainer/HBoxContainer3" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare4" parent="CanvasLayer/VBoxContainer/HBoxContainer3" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare5" parent="CanvasLayer/VBoxContainer/HBoxContainer3" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare6" parent="CanvasLayer/VBoxContainer/HBoxContainer3" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="GridSquare" parent="CanvasLayer/VBoxContainer/HBoxContainer4" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare2" parent="CanvasLayer/VBoxContainer/HBoxContainer4" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare3" parent="CanvasLayer/VBoxContainer/HBoxContainer4" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare4" parent="CanvasLayer/VBoxContainer/HBoxContainer4" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare5" parent="CanvasLayer/VBoxContainer/HBoxContainer4" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare6" parent="CanvasLayer/VBoxContainer/HBoxContainer4" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="GridSquare" parent="CanvasLayer/VBoxContainer/HBoxContainer5" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare2" parent="CanvasLayer/VBoxContainer/HBoxContainer5" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare3" parent="CanvasLayer/VBoxContainer/HBoxContainer5" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare4" parent="CanvasLayer/VBoxContainer/HBoxContainer5" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare5" parent="CanvasLayer/VBoxContainer/HBoxContainer5" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare6" parent="CanvasLayer/VBoxContainer/HBoxContainer5" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="GridSquare" parent="CanvasLayer/VBoxContainer/HBoxContainer6" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare2" parent="CanvasLayer/VBoxContainer/HBoxContainer6" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare3" parent="CanvasLayer/VBoxContainer/HBoxContainer6" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare4" parent="CanvasLayer/VBoxContainer/HBoxContainer6" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare5" parent="CanvasLayer/VBoxContainer/HBoxContainer6" instance=ExtResource("1_dmebl")]
+layout_mode = 2
+
+[node name="GridSquare6" parent="CanvasLayer/VBoxContainer/HBoxContainer6" instance=ExtResource("1_dmebl")]
+layout_mode = 2
