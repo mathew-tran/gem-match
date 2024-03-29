@@ -2,14 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://bse58t3e4pmxi" path="res://Art/GridPiece.svg" id="1_v7jjj"]
 [ext_resource type="Script" path="res://Scripts/GridSquare.gd" id="2_1vr51"]
-[ext_resource type="Texture2D" uid="uid://daqyry7lcu3rl" path="res://Art/Game/Pieces/emerald.svg" id="3_i8i5r"]
 [ext_resource type="Texture2D" uid="uid://bpvbmmv16f71l" path="res://Art/UI/select.svg" id="4_alu6x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fnb3r"]
 
 [node name="GridSquare" type="TextureRect"]
 texture = ExtResource("1_v7jjj")
 script = ExtResource("2_1vr51")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Highlight" type="TextureRect" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -17,16 +18,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -51.0
-offset_top = -52.0
-offset_right = 77.0
-offset_bottom = 76.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("3_i8i5r")
+texture = ExtResource("4_alu6x")
 
-[node name="Highlight" type="TextureRect" parent="."]
+[node name="Highlight2" type="TextureRect" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -49,5 +49,14 @@ layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(64, 65)
+shape = SubResource("RectangleShape2D_fnb3r")
+
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

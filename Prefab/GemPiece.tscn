@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://bimkpp7lrtrf1"]
+
+[ext_resource type="Texture2D" uid="uid://bhfepm0a6u04v" path="res://Art/Game/Pieces/Diamond.svg" id="1_0dohn"]
+[ext_resource type="Script" path="res://Scripts/GemPiece.gd" id="1_pa23c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7vxw"]
+size = Vector2(97.5, 92.5)
+
+[node name="GemPiece" type="Control"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pa23c")
+
+[node name="Sprite2D" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = -61.0
+offset_right = 67.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(48, 48)
+texture = ExtResource("1_0dohn")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+scale = Vector2(1, 1)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+position = Vector2(64.25, 61.75)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_i7vxw")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
