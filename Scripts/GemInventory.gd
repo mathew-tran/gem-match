@@ -25,11 +25,7 @@ func SlotNextGemPiece():
 		Gems.remove_at(0)
 
 func OnGemPlaced(square):
-	CheckGrid(square)
 	SlotNextGemPiece()
-
-func CheckGrid(square):
-	pass
 
 func _ready():
 	PopulateGems()

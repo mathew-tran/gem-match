@@ -4,11 +4,17 @@ var Row = -1
 var Column = -1
 var GemRef = null
 
+signal Slotted
+
 func GetRow():
 	return Row
 
 func GetColumn():
 	return Column
+
+func Setup(rowNum, colNum):
+	Row = rowNum
+	Column = colNum
 
 func OnEnter():
 	if IsEmpty():
@@ -42,3 +48,7 @@ func SlotInGem(gem):
 	$Highlight.visible = false
 	GemRef = gem
 	GemRef.SetCollision(false)
+	emit_signal("Slotted", self)
+
+func GetString():
+	return "Row: " + str(Row) +", Column: " + str(Column)
