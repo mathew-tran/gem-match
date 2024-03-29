@@ -1,20 +1,44 @@
 extends TextureRect
 
-var CurrentValue = Definitions.GEM_TYPE.NONE
+var Row = -1
+var Column = -1
+var GemRef = null
+
+func GetRow():
+	return Row
+
+func GetColumn():
+	return Column
+
+func OnEnter():
+	if IsEmpty():
+		$Highlight.visible = true
+	else:
+		$HighlightFail.visible = true
+
+func OnExit():
+	$Highlight.visible = false
+	$HighlightFail.visible = false
 
 func _on_button_mouse_entered():
-	$Highlight.visible = true
+	OnEnter()
 
 func _on_button_mouse_exited():
-	$Highlight.visible = false
+	OnExit()
 
 
+func IsEmpty():
+	return GemRef == null
 
 func _on_area_2d_area_entered(area):
-	$Highlight.visible = true
-
+	OnEnter()
 
 
 func _on_area_2d_area_exited(area):
-	$Highlight.visible = false
+	OnExit()
 
+func SlotInGem(gem):
+	gem.global_position = $GemPosition.global_position
+	$Highlight.visible = false
+	GemRef = gem
+	GemRef.SetCollision(false)

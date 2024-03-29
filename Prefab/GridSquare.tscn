@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://csufmob2i3gat"]
+[gd_scene load_steps=7 format=3 uid="uid://csufmob2i3gat"]
 
 [ext_resource type="Texture2D" uid="uid://bse58t3e4pmxi" path="res://Art/GridPiece.svg" id="1_v7jjj"]
 [ext_resource type="Script" path="res://Scripts/GridSquare.gd" id="2_1vr51"]
 [ext_resource type="Texture2D" uid="uid://bpvbmmv16f71l" path="res://Art/UI/select.svg" id="4_alu6x"]
+[ext_resource type="Texture2D" uid="uid://bhfepm0a6u04v" path="res://Art/Game/Pieces/Diamond.svg" id="4_aynx1"]
+[ext_resource type="Texture2D" uid="uid://u124j8bm6ktt" path="res://Art/UI/selectfail.svg" id="4_xd57q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fnb3r"]
+size = Vector2(32, 32)
 
 [node name="GridSquare" type="TextureRect"]
 texture = ExtResource("1_v7jjj")
@@ -26,8 +29,10 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_alu6x")
 
-[node name="Highlight2" type="TextureRect" parent="."]
+[node name="HighlightFail" type="TextureRect" parent="."]
 visible = false
+z_index = 1
+z_as_relative = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -40,7 +45,7 @@ offset_right = 64.0
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_alu6x")
+texture = ExtResource("4_xd57q")
 
 [node name="Button" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -55,6 +60,17 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(64, 65)
 shape = SubResource("RectangleShape2D_fnb3r")
+
+[node name="GemPosition" type="Node2D" parent="."]
+position = Vector2(2, 2)
+
+[node name="TextureRect" type="TextureRect" parent="GemPosition"]
+visible = false
+offset_right = 128.0
+offset_bottom = 128.0
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(48, 48)
+texture = ExtResource("4_aynx1")
 
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]

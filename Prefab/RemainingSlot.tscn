@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cixtxt26wjlem"]
+[gd_scene load_steps=3 format=3 uid="uid://cixtxt26wjlem"]
 
 [ext_resource type="Texture2D" uid="uid://4yiv1lm2gfm" path="res://Art/UI/remaining.svg" id="1_38qkj"]
+[ext_resource type="Script" path="res://Scripts/GemInventory.gd" id="2_tsmry"]
 
 [node name="RemainingSlot" type="TextureRect"]
 offset_right = 160.0
 offset_bottom = 160.0
 texture = ExtResource("1_38qkj")
+script = ExtResource("2_tsmry")

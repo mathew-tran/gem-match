@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bj3tgbu3qwr08" path="res://Art/BG.svg" id="1_o2s0i"]
 [ext_resource type="Texture2D" uid="uid://hc65ya0y3p3b" path="res://Art/cloud1.svg" id="2_wtd1y"]
 [ext_resource type="Texture2D" uid="uid://c00wyavasgy5s" path="res://Art/cloud2.svg" id="3_ltya5"]
+[ext_resource type="Script" path="res://Scripts/Grid.gd" id="4_6u7sk"]
 [ext_resource type="PackedScene" uid="uid://cixtxt26wjlem" path="res://Prefab/RemainingSlot.tscn" id="5_kaftd"]
-[ext_resource type="PackedScene" uid="uid://bimkpp7lrtrf1" path="res://Prefab/GemPiece.tscn" id="6_67dt6"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -165,6 +165,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 alignment = 1
+script = ExtResource("4_6u7sk")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
@@ -303,6 +304,3 @@ offset_left = 218.0
 offset_top = 497.0
 offset_right = 378.0
 offset_bottom = 657.0
-
-[node name="GemPiece" parent="CanvasLayer/RemainingSlot" instance=ExtResource("6_67dt6")]
-layout_mode = 1

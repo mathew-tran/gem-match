@@ -7,6 +7,7 @@
 size = Vector2(97.5, 92.5)
 
 [node name="GemPiece" type="Control"]
+z_as_relative = false
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 3
 anchors_preset = 8
