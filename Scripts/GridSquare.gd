@@ -52,3 +52,6 @@ func SlotInGem(gem):
 
 func GetString():
 	return "Row: " + str(Row) +", Column: " + str(Column)
+
+func GetGemType():
+	return GemRef.GemType

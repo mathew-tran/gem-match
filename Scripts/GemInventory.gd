@@ -31,4 +31,3 @@ func _ready():
 	PopulateGems()
 	Gems.shuffle()
 	SlotNextGemPiece()
-

@@ -13,13 +13,38 @@ func InitializeGrid():
 
 func OnGemSlotted(gridPiece):
 	print(gridPiece.GetString() + " filled")
-	CheckRow(gridPiece.GetRow())
-	CheckColumn(gridPiece.GetColumn())
+	CheckRow(gridPiece)
+	CheckColumn(gridPiece)
 
-func CheckRow(rowNum):
-	print("Checking Row.. " + str(rowNum))
-	pass
+func CheckRow(gridPiece):
+	print("Checking Row..")
+	var consecutive = []
+	var consecutiveType = Definitions.GEM_TYPE.NONE
+	for gridSquare in get_child(gridPiece.GetRow()).get_children():
+		if gridSquare.IsEmpty() == false:
+			if consecutiveType == gridSquare.GetGemType():
+				consecutive.append(gridSquare)
+				if len(consecutive) >= 5:
+					for grid in consecutive:
+						grid.GemRef.queue_free()
+			else:
+				consecutive.clear()
+				consecutive.append(gridSquare)
+				consecutiveType = gridSquare.GetGemType()
 
-func CheckColumn(colNum):
-	print("Checking Column.. " + str(colNum))
-	pass
+func CheckColumn(gridPiece):
+	print("Checking Column..")
+	var consecutive = []
+	var consecutiveType = Definitions.GEM_TYPE.NONE
+	for column in get_children():
+		var gridSquare = column.get_child(gridPiece.GetColumn())
+		if gridSquare.IsEmpty() == false:
+			if consecutiveType == gridSquare.GetGemType():
+				consecutive.append(gridSquare)
+				if len(consecutive) >= 5:
+					for grid in consecutive:
+						grid.GemRef.queue_free()
+			else:
+				consecutive.clear()
+				consecutive.append(gridSquare)
+				consecutiveType = gridSquare.GetGemType()
