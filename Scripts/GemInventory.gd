@@ -19,8 +19,11 @@ func _ready():
 	Game.connect("SwitchComplete", Callable(self, "OnSwitchComplete"))
 
 func OnSwitchComplete():
-	$SwitchLabel.visible = false
-	SlotNextGemPiece()
+	Game.CheckGrid()
+	while Game.IsGridBeingChecked():
+		await get_tree().process_frame
+
+	OnGemConfirmed(null)
 
 func PopulateGems():
 	for type in GemTypes:
@@ -79,13 +82,14 @@ func OnGemDestroyed(square):
 		CheckGameOver()
 
 func OnGemConfirmed(square):
+	$SwitchLabel.visible = false
 	$Label.text = str(len(Gems))
 	$Timer.start()
 	await $Timer.timeout
 	while Game.IsGridBeingChecked():
 		await get_tree().process_frame
 	print("grid check complete")
-	if Game.HasSwitches() and Game.DoGemsExist() and Game.HaveAllGemsBeenPlaced() == false:
+	if Game.HasSwitches() and Game.DoGemsExist():
 		Game.bIsInSwitchMode = true
 		$SwitchLabel.visible = true
 		return

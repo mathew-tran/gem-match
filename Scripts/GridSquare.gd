@@ -59,7 +59,7 @@ func _on_area_2d_area_exited(area):
 	OnExit()
 
 func SlotInGem(gem, type = "slot"):
-
+	EnableSwitch(false)
 	$Highlight.visible = false
 	GemRef = gem
 	if is_instance_valid(GemRef):

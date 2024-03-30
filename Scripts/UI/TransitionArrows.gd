@@ -16,12 +16,9 @@ func _ready():
 func OnSwitched():
 	HideHints()
 	GridPiece.GemRef.ConfirmPlacement()
-	CheckGrid()
+	Game.CheckGrid()
 
-func CheckGrid():
-	var grid = get_tree().get_nodes_in_group("GRID")
-	if grid:
-		grid[0].CheckGrid()
+
 
 func HideHints():
 	$SwitchRight.visible = false
@@ -66,7 +63,7 @@ func ShowSwitchableAreas(data):
 	if nulls == 4:
 		if is_instance_valid(GridPiece.GemRef):
 			GridPiece.GemRef.ConfirmPlacement()
-		CheckGrid()
+		Game.CheckGrid()
 		emit_signal("Transitioned")
 
 
