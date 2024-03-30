@@ -8,6 +8,7 @@ var GemType = Definitions.GEM_TYPE.DIAMOND
 
 signal Placed(square)
 signal Confirmed(square)
+signal Destroyed(square)
 
 func _ready():
 	Setup()
@@ -46,11 +47,17 @@ func _process(delta):
 				bCanBePlaced = false
 				emit_signal("Placed", square)
 				z_index = 0
+				modulate = Color.WHITE
 			else:
 				global_position = InitialPosition
 
+func Destroy():
+	$AnimationPlayer.play("destroy")
+
 func ConfirmPlacement():
 	emit_signal("Confirmed", self)
+	$Sprite2D/Area2D/CollisionShape2D.disabled = true
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func GetSquare():
 	var areas = $Sprite2D/Area2D.get_overlapping_areas()
@@ -60,11 +67,23 @@ func GetSquare():
 
 func _on_mouse_entered():
 	bIsEntered = true
+	if bCanBePlaced:
+		modulate = Color.SILVER
 
 
 func _on_mouse_exited():
 	bIsEntered = false
+	if bCanBePlaced:
+		modulate = Color.WHITE
 
 func SetCollision(bEnable):
 	$Sprite2D/Area2D/CollisionShape2D.disabled = !bEnable
 
+
+
+func _on_animation_player_animation_finished(anim_name):
+	emit_signal("Destroyed", self)
+	var gemInventory = get_tree().get_nodes_in_group("GEMINVENTORY")
+	if gemInventory:
+		gemInventory[0].StartTimer()
+	queue_free()

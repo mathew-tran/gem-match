@@ -7,6 +7,7 @@ var GemRef = null
 signal Slotted(square)
 signal Completed(square)
 
+var bEntered = false
 func _ready():
 	add_to_group("GRIDPIECE")
 
@@ -31,10 +32,10 @@ func OnExit():
 	$HighlightFail.visible = false
 
 func _on_button_mouse_entered():
-	pass
+	bEntered = true
 
 func _on_button_mouse_exited():
-	pass
+	bEntered = false
 
 func IsEmpty():
 	return GemRef == null
@@ -48,16 +49,16 @@ func ShowSwitchableAreas(data):
 		switchArea[0].SetTransitionArrows(self, data)
 
 
-
-
 func _on_area_2d_area_exited(area):
 	OnExit()
 
 func SlotInGem(gem, type = "slot"):
-	gem.global_position = $GemPosition.global_position
+
 	$Highlight.visible = false
 	GemRef = gem
-	GemRef.SetCollision(false)
+	if is_instance_valid(GemRef):
+		GemRef.SetCollision(false)
+		gem.global_position = $GemPosition.global_position
 	if type == "slot":
 		emit_signal("Slotted", self)
 
@@ -66,3 +67,18 @@ func GetString():
 
 func GetGemType():
 	return GemRef.GemType
+
+
+func _process(delta):
+	if bEntered == false:
+		return
+	if Game.bIsInSwitchMode:
+		if Input.is_action_just_pressed("click"):
+			Game.BroadcastSquareClicked(self)
+			EnableSwitch(true)
+		elif Input.is_action_just_pressed("unclick"):
+			EnableSwitch(false)
+			Game.BroadcastSquareUnClicked(self)
+
+func EnableSwitch(bSwitch):
+	$Switch.visible = bSwitch

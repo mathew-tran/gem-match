@@ -1,50 +1,52 @@
 [gd_scene load_steps=6 format=3 uid="uid://v64lat60b010"]
 
-[ext_resource type="Texture2D" uid="uid://chkjjscgbmtp0" path="res://Art/UI/switch.svg" id="1_f2ddd"]
 [ext_resource type="Script" path="res://Prefab/UI/SwitchIndicator.gd" id="1_xhh1l"]
+[ext_resource type="Texture2D" uid="uid://cr4luiaxoa2a1" path="res://Art/UI/selectnobg.svg" id="2_av6mq"]
 
-[sub_resource type="Animation" id="Animation_gmcqq"]
-resource_name = "anim"
+[sub_resource type="Animation" id="Animation_yw118"]
+resource_name = "animIn"
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("Switch:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(-44, -44), Vector2(-20, -44), Vector2(-44, -44)]
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_wseqb"]
+[sub_resource type="Animation" id="Animation_6istm"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("Switch:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-44, -44)]
+"values": [Vector2(1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ur5h5"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kiexe"]
 _data = {
-"RESET": SubResource("Animation_wseqb"),
-"anim": SubResource("Animation_gmcqq")
+"RESET": SubResource("Animation_6istm"),
+"animIn": SubResource("Animation_yw118")
 }
 
 [node name="SwitchIndicator" type="Button"]
+self_modulate = Color(1, 1, 1, 0)
 z_index = 1
 z_as_relative = false
-offset_right = 70.0
-offset_bottom = 60.0
+custom_minimum_size = Vector2(128, 128)
+offset_right = 128.0
+offset_bottom = 128.0
 script = ExtResource("1_xhh1l")
 
 [node name="Switch" type="TextureRect" parent="."]
@@ -54,18 +56,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -44.0
-offset_right = 84.0
-offset_bottom = 84.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_f2ddd")
+pivot_offset = Vector2(64, 64)
+texture = ExtResource("2_av6mq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Switch")
 libraries = {
-"": SubResource("AnimationLibrary_ur5h5")
+"": SubResource("AnimationLibrary_kiexe")
 }
 
 [connection signal="button_up" from="." to="." method="_on_button_up"]

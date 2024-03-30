@@ -3,6 +3,9 @@ extends VBoxContainer
 var Width = -1
 var Height = -1
 
+signal CompleteCheck
+
+
 func _ready():
 	InitializeGrid()
 	add_to_group("GRID")
@@ -21,6 +24,10 @@ func InitializeGrid():
 			get_child(row).get_child(column).connect("Slotted", Callable(self, "OnGemPlaced"))
 
 func IsPieceTheSameType(pieceA, pieceB):
+	if pieceA.GemRef == null:
+		return false
+	if pieceB.GemRef == null:
+		return false
 	return pieceA.GetGemType() == pieceB.GetGemType()
 
 func OnGemPlaced(gridPiece):
@@ -64,6 +71,7 @@ func OnGemPlaced(gridPiece):
 func OnSquareCheck(gridPiece):
 	CheckRow(gridPiece)
 	CheckColumn(gridPiece)
+	emit_signal("CompleteCheck")
 
 func CheckRow(gridPiece):
 	print("Checking Row..")
@@ -74,8 +82,10 @@ func CheckRow(gridPiece):
 			if consecutiveType == gridSquare.GetGemType():
 				consecutive.append(gridSquare)
 				if len(consecutive) >= 5:
+					Game.BroadcastGemCombined()
 					for grid in consecutive:
-						grid.GemRef.queue_free()
+						grid.GemRef.Destroy()
+						await grid.GemRef.Destroyed
 			else:
 				consecutive.clear()
 				consecutive.append(gridSquare)
@@ -91,8 +101,10 @@ func CheckColumn(gridPiece):
 			if consecutiveType == gridSquare.GetGemType():
 				consecutive.append(gridSquare)
 				if len(consecutive) >= 5:
+					Game.BroadcastGemCombined()
 					for grid in consecutive:
-						grid.GemRef.queue_free()
+						grid.GemRef.Destroy()
+						await grid.GemRef.Destroyed
 			else:
 				consecutive.clear()
 				consecutive.append(gridSquare)

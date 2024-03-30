@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bom72s7pp1eku"]
+[gd_scene load_steps=11 format=3 uid="uid://bom72s7pp1eku"]
 
 [ext_resource type="PackedScene" uid="uid://csufmob2i3gat" path="res://Prefab/GridSquare.tscn" id="1_dmebl"]
 [ext_resource type="Texture2D" uid="uid://bj3tgbu3qwr08" path="res://Art/BG.svg" id="1_o2s0i"]
@@ -9,44 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://4nigwiqu5pha" path="res://Prefab/UI/GameOverScreen.tscn" id="7_vjuip"]
 [ext_resource type="Script" path="res://Scripts/UI/TransitionArrows.gd" id="8_mwxka"]
 [ext_resource type="PackedScene" uid="uid://v64lat60b010" path="res://Prefab/UI/SwitchIndicator.tscn" id="8_n4a0f"]
-[ext_resource type="Script" path="res://Prefab/UI/SwitchIndicator.gd" id="10_o3yik"]
-
-[sub_resource type="Animation" id="Animation_gmcqq"]
-resource_name = "anim"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-44, -44), Vector2(-20, -44), Vector2(-44, -44)]
-}
-
-[sub_resource type="Animation" id="Animation_wseqb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-44, -44)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ur5h5"]
-_data = {
-"RESET": SubResource("Animation_wseqb"),
-"anim": SubResource("Animation_gmcqq")
-}
+[ext_resource type="Texture2D" uid="uid://bqu3yvl2munt1" path="res://Art/UI/selectnobgbase.svg" id="10_8vy54"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -361,61 +324,30 @@ script = ExtResource("8_mwxka")
 [node name="SwitchRight" parent="CanvasLayer/TransitionArrow" instance=ExtResource("8_n4a0f")]
 layout_mode = 0
 offset_left = 128.0
-offset_top = 48.0
-offset_right = 168.0
-offset_bottom = 88.0
-
-[node name="SwitchMiddle" type="Button" parent="CanvasLayer/TransitionArrow"]
-z_index = 1
-z_as_relative = false
-layout_mode = 0
-offset_left = 48.0
-offset_top = 48.0
-offset_right = 88.0
-offset_bottom = 88.0
-script = ExtResource("10_o3yik")
-
-[node name="Switch" type="TextureRect" parent="CanvasLayer/TransitionArrow/SwitchMiddle"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -64.0
-offset_right = 64.0
-offset_bottom = 64.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/TransitionArrow/SwitchMiddle"]
-root_node = NodePath("../Switch")
-libraries = {
-"": SubResource("AnimationLibrary_ur5h5")
-}
+offset_right = 256.0
 
 [node name="SwitchLeft" parent="CanvasLayer/TransitionArrow" instance=ExtResource("8_n4a0f")]
 layout_mode = 0
-offset_top = 86.0
-offset_right = 8.0
-offset_bottom = 94.0
+offset_top = 128.0
+offset_bottom = 256.0
 rotation = 3.14159
 
 [node name="SwitchDown" parent="CanvasLayer/TransitionArrow" instance=ExtResource("8_n4a0f")]
 layout_mode = 0
-offset_left = 84.0
-offset_top = 126.0
-offset_right = 124.0
-offset_bottom = 166.0
+offset_left = 128.0
+offset_top = 128.0
+offset_right = 256.0
+offset_bottom = 256.0
 rotation = 1.57079
 
 [node name="SwitchUp" parent="CanvasLayer/TransitionArrow" instance=ExtResource("8_n4a0f")]
 layout_mode = 0
-offset_left = 44.0
-offset_top = 2.0
-offset_right = 84.0
-offset_bottom = 42.0
 rotation = 4.71238
 
-[connection signal="button_up" from="CanvasLayer/TransitionArrow/SwitchMiddle" to="CanvasLayer/TransitionArrow/SwitchMiddle" method="_on_button_up"]
+[node name="SwitchMiddle" parent="CanvasLayer/TransitionArrow" instance=ExtResource("8_n4a0f")]
+layout_mode = 0
+
+[node name="Switch" parent="CanvasLayer/TransitionArrow/SwitchMiddle" index="0"]
+texture = ExtResource("10_8vy54")
+
+[editable path="CanvasLayer/TransitionArrow/SwitchMiddle"]

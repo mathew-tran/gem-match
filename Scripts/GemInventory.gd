@@ -8,6 +8,17 @@ var GemTypes = [
 	Definitions.GEM_TYPE.EMERALD,
 	Definitions.GEM_TYPE.TOPAZ
 ]
+func _ready():
+	add_to_group("GEMINVENTORY")
+	PopulateGems()
+	Gems.shuffle()
+	SlotNextGemPiece()
+	Game.connect("SwitchComplete", Callable(self, "OnSwitchComplete"))
+
+func OnSwitchComplete():
+	$SwitchLabel.visible = false
+	SlotNextGemPiece()
+
 func PopulateGems():
 	for type in GemTypes:
 		for x in range(0, 5):
@@ -25,6 +36,8 @@ func SlotNextGemPiece():
 		Gems.remove_at(0)
 		$Label.text = str(len(Gems) + 1)
 	else:
+		StartTimer()
+		await $Timer.timeout
 		await get_tree().process_frame
 		$Label.text = "EMPTY"
 		var grid = get_tree().get_nodes_in_group("GRIDPIECE")
@@ -34,11 +47,18 @@ func SlotNextGemPiece():
 				return
 		Game.BroadcastGameOver(true)
 
+func StartTimer():
+	$Timer.start()
 
 func OnGemConfirmed(square):
-	SlotNextGemPiece()
+	$Timer.start()
+	await $Timer.timeout
+	if Game.bIsInSwitchMode:
+		$SwitchLabel.visible = true
+		return
 
-func _ready():
-	PopulateGems()
-	Gems.shuffle()
-	SlotNextGemPiece()
+	var grid = get_tree().get_nodes_in_group("GRID")
+	if grid:
+		SlotNextGemPiece()
+
+

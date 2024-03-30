@@ -66,8 +66,9 @@ func ShowSwitchableAreas(data):
 	if nulls == 4:
 		if is_instance_valid(GridPiece.GemRef):
 			GridPiece.GemRef.ConfirmPlacement()
-		emit_signal("Transitioned")
 		CheckGrid()
+		emit_signal("Transitioned")
+
 
 	else:
 		$SwitchMiddle.Setup(GridPiece, null)

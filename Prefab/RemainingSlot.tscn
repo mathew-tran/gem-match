@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cixtxt26wjlem"]
+[gd_scene load_steps=4 format=3 uid="uid://cixtxt26wjlem"]
 
 [ext_resource type="Texture2D" uid="uid://4yiv1lm2gfm" path="res://Art/UI/remaining.svg" id="1_38qkj"]
 [ext_resource type="Script" path="res://Scripts/GemInventory.gd" id="2_tsmry"]
+[ext_resource type="Texture2D" uid="uid://cbl81rkiyoimy" path="res://Art/UI/selectswitch.svg" id="3_f83yc"]
 
 [node name="RemainingSlot" type="TextureRect"]
 offset_right = 160.0
@@ -15,5 +16,27 @@ offset_top = -83.0
 offset_right = 160.0
 theme_override_font_sizes/font_size = 60
 text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="SwitchLabel" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 16.0
+offset_top = 15.0
+offset_right = 144.0
+offset_bottom = 143.0
+texture = ExtResource("3_f83yc")
+
+[node name="Label2" type="Label" parent="SwitchLabel"]
+layout_mode = 0
+offset_top = 26.0
+offset_right = 140.0
+offset_bottom = 96.0
+text = "SWITCH!"
 horizontal_alignment = 1
 vertical_alignment = 1
