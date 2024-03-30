@@ -11,6 +11,7 @@ signal Confirmed(square)
 signal Destroyed(square)
 
 func _ready():
+	add_to_group("GEM")
 	Setup()
 	if GemType == Definitions.GEM_TYPE.DIAMOND:
 		$Sprite2D.texture = Definitions.DiamondTexture

@@ -10,6 +10,31 @@ var bIsInSwitchMode = false
 var SquareA = null
 var SquareB = null
 
+func IsGridBeingChecked():
+	print("=======waiting on grid")
+	var grid = get_tree().get_nodes_in_group("GRID")
+	if grid:
+		return grid[0].bIsCheckingGrid
+	return false
+
+
+func DoGemsExist():
+	var gems = get_tree().get_nodes_in_group("GEM")
+	for gem in gems:
+		if gem.bIsDestroyed == false:
+			return true
+	return false
+
+func HaveAllGemsBeenPlaced():
+	var gems = get_tree().get_nodes_in_group("GEM")
+	for gem in gems:
+		if gem.bCanBePlaced == true:
+			return false
+	return true
+
+func HasSwitches():
+	return SwitchAmount > 0
+
 func BroadcastGameOver(bWin):
 	emit_signal("GameOver", bWin)
 	Game.BroadcastSwitchComplete()

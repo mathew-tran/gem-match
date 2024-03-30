@@ -51,22 +51,24 @@ func SlotNextGemPiece():
 
 
 func CheckGameOver():
+	if Game.HaveAllGemsBeenPlaced() == false:
+		return
 	StartTimer()
 	await $Timer.timeout
 	await get_tree().process_frame
 
-	$Label.text = "EMPTY"
+	$Label.text = ""
 	if is_instance_valid(get_tree()) == false:
 		return
-	var grid = get_tree().get_nodes_in_group("GRIDPIECE")
-	for piece in grid:
-		if piece.IsEmpty() == false:
-			if Game.SwitchAmount > 0:
-				return
-			Game.BroadcastGameOver(false)
+
+	if Game.DoGemsExist():
+		if Game.HasSwitches():
+			$SwitchLabel.visible = true
 			return
-	Game.BroadcastGameOver(true)
-	$SwitchLabel.visible = false
+		Game.BroadcastGameOver(false)
+	else:
+		Game.BroadcastGameOver(true)
+		$SwitchLabel.visible = false
 
 func StartTimer():
 	$Timer.start()
@@ -80,19 +82,25 @@ func OnGemConfirmed(square):
 	$Label.text = str(len(Gems))
 	$Timer.start()
 	await $Timer.timeout
-	if Game.bIsInSwitchMode:
+	while Game.IsGridBeingChecked():
+		await get_tree().process_frame
+	print("grid check complete")
+	if Game.HasSwitches() and Game.DoGemsExist() and Game.HaveAllGemsBeenPlaced() == false:
+		Game.bIsInSwitchMode = true
 		$SwitchLabel.visible = true
 		return
 
-	var grid = get_tree().get_nodes_in_group("GRID")
-	if grid:
-		SlotNextGemPiece()
+
+	SlotNextGemPiece()
 
 func _on_button_button_up():
-	Game.BroadcastSwitchComplete()
+	SkipSwitch()
 
+func SkipSwitch():
+	Game.SwitchAmount = 0
+	Game.BroadcastSwitchComplete()
 
 func _input(event):
 	if $SwitchLabel.is_visible_in_tree():
 		if event.is_action_pressed("skip"):
-			Game.BroadcastSwitchComplete()
+			SkipSwitch()

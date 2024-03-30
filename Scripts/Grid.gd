@@ -5,6 +5,7 @@ var Height = -1
 
 signal CompleteCheck
 
+var bIsCheckingGrid = true
 
 func _ready():
 	await get_tree().process_frame
@@ -12,12 +13,13 @@ func _ready():
 	add_to_group("GRID")
 
 func CheckGrid():
+	bIsCheckingGrid = true
 	print("==========GRID TEST")
 	for row in range(0, len(get_children())):
 		for column in range(0, len(get_child(row).get_children())):
 			OnSquareCheck(get_child(row).get_child(column))
-			await get_tree().create_timer(.01).timeout
 	print("==========GRID TEST END")
+	bIsCheckingGrid = false
 
 func InitializeGrid():
 	Width = len(get_children())
