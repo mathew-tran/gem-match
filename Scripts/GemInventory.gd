@@ -8,6 +8,8 @@ var GemTypes = [
 	Definitions.GEM_TYPE.EMERALD,
 	Definitions.GEM_TYPE.TOPAZ
 ]
+
+var GemAmount = 0
 func _ready():
 	add_to_group("GEMINVENTORY")
 	PopulateGems()
@@ -27,30 +29,45 @@ func PopulateGems():
 			instance.global_position = Vector2(-1000, 0)
 			add_child(instance)
 			Gems.append(instance)
+			GemAmount += 1
+	$Label.text = str(len(Gems))
 
 func SlotNextGemPiece():
 	if len(Gems) > 0:
 		Gems[0].global_position = global_position + Vector2(16,16)
 		Gems[0].Setup()
 		Gems[0].connect("Confirmed", Callable(self, "OnGemConfirmed"))
+		Gems[0].connect("Destroyed", Callable(self, "OnGemDestroyed"))
 		Gems.remove_at(0)
-		$Label.text = str(len(Gems) + 1)
+
 	else:
-		StartTimer()
-		await $Timer.timeout
-		await get_tree().process_frame
-		$Label.text = "EMPTY"
-		var grid = get_tree().get_nodes_in_group("GRIDPIECE")
-		for piece in grid:
-			if piece.IsEmpty() == false:
-				Game.BroadcastGameOver(false)
-				return
-		Game.BroadcastGameOver(true)
+		CheckGameOver()
+
+
+func CheckGameOver():
+	StartTimer()
+	await $Timer.timeout
+	await get_tree().process_frame
+
+	$Label.text = "EMPTY"
+	var grid = get_tree().get_nodes_in_group("GRIDPIECE")
+	for piece in grid:
+		if piece.IsEmpty() == false:
+			Game.BroadcastGameOver(false)
+			return
+	Game.BroadcastGameOver(true)
+	$SwitchLabel.visible = false
 
 func StartTimer():
 	$Timer.start()
 
+func OnGemDestroyed(square):
+	GemAmount -= 1
+	if GemAmount == 0:
+		CheckGameOver()
+
 func OnGemConfirmed(square):
+	$Label.text = str(len(Gems))
 	$Timer.start()
 	await $Timer.timeout
 	if Game.bIsInSwitchMode:
@@ -61,4 +78,6 @@ func OnGemConfirmed(square):
 	if grid:
 		SlotNextGemPiece()
 
+func _on_button_button_up():
+	Game.BroadcastSwitchComplete()
 

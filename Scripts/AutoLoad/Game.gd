@@ -11,6 +11,7 @@ var SquareB = null
 
 func BroadcastGameOver(bWin):
 	emit_signal("GameOver", bWin)
+	Game.BroadcastSwitchComplete()
 
 func BroadcastSquareUnClicked(square):
 	if SquareA == square:
@@ -33,15 +34,23 @@ func BroadcastSquareClicked(square):
 			SquareA.SlotInGem(squareBData, "switch")
 			SquareB.SlotInGem(squareAData, "switch")
 			await get_tree().process_frame
-			SquareA.EnableSwitch(false)
-			SquareB.EnableSwitch(false)
 			BroadcastSwitchComplete()
+			var grid = get_tree().get_nodes_in_group("GRID")
+			if grid:
+				grid[0].CheckGrid()
 
 func BroadcastGemCombined():
 	emit_signal("GemCombined")
 	bIsInSwitchMode = true
+
 	SquareA = null
 	SquareB = null
 
+
 func BroadcastSwitchComplete():
 	emit_signal("SwitchComplete")
+	if SquareA:
+		SquareA.EnableSwitch(false)
+	if SquareB:
+		SquareB.EnableSwitch(false)
+	bIsInSwitchMode = false
