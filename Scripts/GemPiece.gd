@@ -19,6 +19,10 @@ func _ready():
 	elif GemType == Definitions.GEM_TYPE.EMERALD:
 		$Sprite2D.texture = Definitions.EmeraldTexture
 
+func MoveToPosition(newPosition):
+	global_position = newPosition
+	$AnimationPlayer.play("animIn")
+
 func Setup():
 	InitialPosition = global_position
 
@@ -58,6 +62,7 @@ func ConfirmPlacement():
 	emit_signal("Confirmed", self)
 	$Sprite2D/Area2D/CollisionShape2D.disabled = true
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	$AnimationPlayer.play_backwards("placed")
 
 func GetSquare():
 	var areas = $Sprite2D/Area2D.get_overlapping_areas()
@@ -82,6 +87,8 @@ func SetCollision(bEnable):
 
 
 func _on_animation_player_animation_finished(anim_name):
+	if anim_name != "destroy":
+		return
 	emit_signal("Destroyed", self)
 	var gemInventory = get_tree().get_nodes_in_group("GEMINVENTORY")
 	if gemInventory:

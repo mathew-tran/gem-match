@@ -34,7 +34,7 @@ func PopulateGems():
 
 func SlotNextGemPiece():
 	if len(Gems) > 0:
-		Gems[0].global_position = global_position + Vector2(16,16)
+		Gems[0].MoveToPosition(global_position + Vector2(16,16))
 		Gems[0].Setup()
 		Gems[0].connect("Confirmed", Callable(self, "OnGemConfirmed"))
 		Gems[0].connect("Destroyed", Callable(self, "OnGemDestroyed"))
@@ -81,3 +81,8 @@ func OnGemConfirmed(square):
 func _on_button_button_up():
 	Game.BroadcastSwitchComplete()
 
+
+func _input(event):
+	if $SwitchLabel.is_visible_in_tree():
+		if event.is_action_pressed("skip"):
+			Game.BroadcastSwitchComplete()

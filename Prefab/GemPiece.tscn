@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bimkpp7lrtrf1"]
+[gd_scene load_steps=9 format=3 uid="uid://bimkpp7lrtrf1"]
 
 [ext_resource type="Texture2D" uid="uid://bhfepm0a6u04v" path="res://Art/Game/Pieces/Diamond.svg" id="1_0dohn"]
 [ext_resource type="Script" path="res://Scripts/GemPiece.gd" id="1_pa23c"]
@@ -60,10 +60,43 @@ tracks/1/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_yfgqf"]
+resource_name = "animIn"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_7gs3y"]
+resource_name = "placed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(1.2, 1.2), Vector2(0.8, 0.8)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ponci"]
 _data = {
 "RESET": SubResource("Animation_t0508"),
-"destroy": SubResource("Animation_ewa3k")
+"animIn": SubResource("Animation_yfgqf"),
+"destroy": SubResource("Animation_ewa3k"),
+"placed": SubResource("Animation_7gs3y")
 }
 
 [node name="GemPiece" type="Control"]
