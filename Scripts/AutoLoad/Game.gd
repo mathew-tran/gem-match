@@ -95,3 +95,4 @@ func BroadcastSwitchComplete():
 		BroadcastGemCombined()
 	else:
 		bIsInSwitchMode = false
+		SwitchAmount = 0

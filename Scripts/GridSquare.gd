@@ -13,6 +13,7 @@ var bEntered = false
 
 func _ready():
 	add_to_group("GRIDPIECE")
+	$AnimationPlayer.play("animIn")
 
 func GetRow():
 	return Row

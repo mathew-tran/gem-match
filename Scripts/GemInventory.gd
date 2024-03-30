@@ -101,7 +101,7 @@ func _on_button_button_up():
 	SkipSwitch()
 
 func SkipSwitch():
-	Game.SwitchAmount = 0
+	Game.SwitchAmount = 1
 	Game.BroadcastSwitchComplete()
 
 func _input(event):
