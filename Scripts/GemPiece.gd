@@ -5,7 +5,7 @@ var bIsEntered = false
 var bCanBePlaced = true
 var InitialPosition = Vector2.ZERO
 var GemType = Definitions.GEM_TYPE.DIAMOND
-
+var bIsDestroyed = false
 signal Placed(square)
 signal Confirmed(square)
 signal Destroyed(square)
@@ -18,6 +18,8 @@ func _ready():
 		$Sprite2D.texture = Definitions.TopazTexture
 	elif GemType == Definitions.GEM_TYPE.EMERALD:
 		$Sprite2D.texture = Definitions.EmeraldTexture
+	elif GemType == Definitions.GEM_TYPE.RUBY:
+		$Sprite2D.texture = Definitions.RubyTexture
 
 func MoveToPosition(newPosition):
 	global_position = newPosition
@@ -57,9 +59,13 @@ func _process(delta):
 
 func Destroy():
 	$AnimationPlayer.play("destroy")
+	bIsDestroyed = true
 
 func ConfirmPlacement():
 	emit_signal("Confirmed", self)
+	DisableGem()
+
+func DisableGem():
 	$Sprite2D/Area2D/CollisionShape2D.disabled = true
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	$AnimationPlayer.play_backwards("placed")

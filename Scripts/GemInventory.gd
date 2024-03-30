@@ -6,7 +6,8 @@ var Gems = []
 var GemTypes = [
 	Definitions.GEM_TYPE.DIAMOND,
 	Definitions.GEM_TYPE.EMERALD,
-	Definitions.GEM_TYPE.TOPAZ
+	Definitions.GEM_TYPE.TOPAZ,
+	Definitions.GEM_TYPE.RUBY
 ]
 
 var GemAmount = 0
@@ -30,16 +31,21 @@ func PopulateGems():
 			add_child(instance)
 			Gems.append(instance)
 			GemAmount += 1
+
+
+func PopTopPiece():
+	var gem = Gems[0]
+	Gems[0].MoveToPosition(global_position + Vector2(16,16))
+	Gems[0].Setup()
+	Gems[0].connect("Confirmed", Callable(self, "OnGemConfirmed"))
+	Gems[0].connect("Destroyed", Callable(self, "OnGemDestroyed"))
+	Gems.remove_at(0)
 	$Label.text = str(len(Gems))
+	return gem
 
 func SlotNextGemPiece():
 	if len(Gems) > 0:
-		Gems[0].MoveToPosition(global_position + Vector2(16,16))
-		Gems[0].Setup()
-		Gems[0].connect("Confirmed", Callable(self, "OnGemConfirmed"))
-		Gems[0].connect("Destroyed", Callable(self, "OnGemDestroyed"))
-		Gems.remove_at(0)
-
+		PopTopPiece()
 	else:
 		CheckGameOver()
 
@@ -50,9 +56,13 @@ func CheckGameOver():
 	await get_tree().process_frame
 
 	$Label.text = "EMPTY"
+	if is_instance_valid(get_tree()) == false:
+		return
 	var grid = get_tree().get_nodes_in_group("GRIDPIECE")
 	for piece in grid:
 		if piece.IsEmpty() == false:
+			if Game.SwitchAmount > 0:
+				return
 			Game.BroadcastGameOver(false)
 			return
 	Game.BroadcastGameOver(true)

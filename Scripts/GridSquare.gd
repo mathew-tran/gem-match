@@ -8,6 +8,9 @@ signal Slotted(square)
 signal Completed(square)
 
 var bEntered = false
+
+@export var bPreAdd = false
+
 func _ready():
 	add_to_group("GRIDPIECE")
 
@@ -16,6 +19,9 @@ func GetRow():
 
 func GetColumn():
 	return Column
+
+func IsPreAdd():
+	return bPreAdd
 
 func Setup(rowNum, colNum):
 	Row = rowNum
@@ -58,6 +64,7 @@ func SlotInGem(gem, type = "slot"):
 	GemRef = gem
 	if is_instance_valid(GemRef):
 		GemRef.SetCollision(false)
+		GemRef.DisableGem()
 		gem.global_position = $GemPosition.global_position
 	if type == "slot":
 		emit_signal("Slotted", self)
@@ -66,7 +73,9 @@ func GetString():
 	return "Row: " + str(Row) +", Column: " + str(Column)
 
 func GetGemType():
-	return GemRef.GemType
+	if is_instance_valid(GemRef):
+		return GemRef.GemType
+	return -1
 
 
 func _process(delta):

@@ -7,21 +7,34 @@ signal CompleteCheck
 
 
 func _ready():
+	await get_tree().process_frame
 	InitializeGrid()
 	add_to_group("GRID")
 
 func CheckGrid():
+	print("==========GRID TEST")
 	for row in range(0, len(get_children())):
 		for column in range(0, len(get_child(row).get_children())):
 			OnSquareCheck(get_child(row).get_child(column))
+			await get_tree().create_timer(.01).timeout
+	print("==========GRID TEST END")
 
 func InitializeGrid():
 	Width = len(get_children())
 	Height = len(get_child(0).get_children())
+	Game.SwitchAmount = 0
+	Game.bIsInSwitchMode = false
+	var gemInventory = get_tree().get_nodes_in_group("GEMINVENTORY")[0]
 	for row in range(0, len(get_children())):
 		for column in range(0, len(get_child(row).get_children())):
-			get_child(row).get_child(column).Setup(row, column)
-			get_child(row).get_child(column).connect("Slotted", Callable(self, "OnGemPlaced"))
+			var gridSquare = get_child(row).get_child(column)
+			gridSquare.Setup(row, column)
+			gridSquare.connect("Slotted", Callable(self, "OnGemPlaced"))
+			if gridSquare.IsPreAdd():
+				var gem = gemInventory.PopTopPiece()
+				gem.bCanBePlaced = false
+				gem.DisableGem()
+				gridSquare.SlotInGem(gem, "auto")
 
 func IsPieceTheSameType(pieceA, pieceB):
 	if pieceA.GemRef == null:
@@ -71,6 +84,7 @@ func OnGemPlaced(gridPiece):
 func OnSquareCheck(gridPiece):
 	CheckRow(gridPiece)
 	CheckColumn(gridPiece)
+	print("CompleteCheck")
 	emit_signal("CompleteCheck")
 
 func CheckRow(gridPiece):
@@ -78,14 +92,16 @@ func CheckRow(gridPiece):
 	var consecutive = []
 	var consecutiveType = Definitions.GEM_TYPE.NONE
 	for gridSquare in get_child(gridPiece.GetRow()).get_children():
-		if gridSquare.IsEmpty() == false:
-			if consecutiveType == gridSquare.GetGemType():
+			if consecutiveType == gridSquare.GetGemType() and consecutiveType != - 1 and consecutiveType != Definitions.GEM_TYPE.NONE:
+				if gridSquare.GemRef.bIsDestroyed == true:
+					return
 				consecutive.append(gridSquare)
 				if len(consecutive) >= 5:
+					Game.SwitchAmount += 1
 					Game.BroadcastGemCombined()
 					for grid in consecutive:
 						grid.GemRef.Destroy()
-						await grid.GemRef.Destroyed
+					consecutive.clear()
 			else:
 				consecutive.clear()
 				consecutive.append(gridSquare)
@@ -97,15 +113,17 @@ func CheckColumn(gridPiece):
 	var consecutiveType = Definitions.GEM_TYPE.NONE
 	for column in get_children():
 		var gridSquare = column.get_child(gridPiece.GetColumn())
-		if gridSquare.IsEmpty() == false:
-			if consecutiveType == gridSquare.GetGemType():
-				consecutive.append(gridSquare)
-				if len(consecutive) >= 5:
-					Game.BroadcastGemCombined()
-					for grid in consecutive:
-						grid.GemRef.Destroy()
-						await grid.GemRef.Destroyed
-			else:
+		if consecutiveType == gridSquare.GetGemType() and consecutiveType != - 1 and consecutiveType != Definitions.GEM_TYPE.NONE:
+			if gridSquare.GemRef.bIsDestroyed == true:
+					return
+			consecutive.append(gridSquare)
+			if len(consecutive) >= 5:
+				Game.SwitchAmount += 1
+				Game.BroadcastGemCombined()
+				for grid in consecutive:
+					grid.GemRef.Destroy()
 				consecutive.clear()
-				consecutive.append(gridSquare)
-				consecutiveType = gridSquare.GetGemType()
+		else:
+			consecutive.clear()
+			consecutive.append(gridSquare)
+			consecutiveType = gridSquare.GetGemType()

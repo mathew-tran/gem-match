@@ -5,6 +5,7 @@ signal SwitchClicked(square)
 signal GemCombined
 signal SwitchComplete
 
+var SwitchAmount = 0
 var bIsInSwitchMode = false
 var SquareA = null
 var SquareB = null
@@ -53,4 +54,9 @@ func BroadcastSwitchComplete():
 		SquareA.EnableSwitch(false)
 	if SquareB:
 		SquareB.EnableSwitch(false)
-	bIsInSwitchMode = false
+
+	SwitchAmount -= 1
+	if SwitchAmount > 0:
+		BroadcastGemCombined()
+	else:
+		bIsInSwitchMode = false
