@@ -6,13 +6,14 @@ var bCanBePlaced = true
 var InitialPosition = Vector2.ZERO
 var GemType = Definitions.GEM_TYPE.DIAMOND
 var bIsDestroyed = false
+var bActive = false
 signal Placed(square)
 signal Confirmed(square)
 signal Destroyed(square)
 
 func _ready():
 	add_to_group("GEM")
-	Setup()
+	InitialPosition = global_position
 	if GemType == Definitions.GEM_TYPE.DIAMOND:
 		$Sprite2D.texture = Definitions.DiamondTexture
 	elif GemType == Definitions.GEM_TYPE.TOPAZ:
@@ -21,13 +22,20 @@ func _ready():
 		$Sprite2D.texture = Definitions.EmeraldTexture
 	elif GemType == Definitions.GEM_TYPE.RUBY:
 		$Sprite2D.texture = Definitions.RubyTexture
+	elif GemType == Definitions.GEM_TYPE.AQUAMARINE:
+		$Sprite2D.texture = Definitions.AquamarineTexture
 
-func MoveToPosition(newPosition):
-	global_position = newPosition
+func MoveToPosition(newPosition, bQuick = true):
+	InitialPosition = newPosition
+	var tween = get_tree().create_tween()
+	if bQuick:
+		tween.tween_property(self, "global_position", newPosition, .1)
+	else:
+		tween.tween_property(self, "global_position", newPosition, .3)
+	tween.play()
+
 	$AnimationPlayer.play("animIn")
 
-func Setup():
-	InitialPosition = global_position
 
 func _input(event):
 	if bIsEntered == false or bCanBePlaced == false:
@@ -36,7 +44,7 @@ func _input(event):
 		bIsDragged = true
 		z_index = 1
 
-func _process(delta):
+func _process(_delta):
 	if bCanBePlaced == false:
 		return
 
@@ -47,7 +55,7 @@ func _process(delta):
 		bIsDragged = false
 		var square = GetSquare()
 		if square == null:
-			global_position = InitialPosition
+			RevertToInitialPosition()
 		else:
 			if square.IsEmpty():
 				square.SlotInGem(self)
@@ -56,7 +64,14 @@ func _process(delta):
 				z_index = 0
 				modulate = Color.WHITE
 			else:
-				global_position = InitialPosition
+				RevertToInitialPosition()
+
+func RevertToInitialPosition():
+	print(InitialPosition)
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "global_position", InitialPosition, .1)
+	tween.play()
+	$AnimationPlayer.play("animIn")
 
 func Destroy():
 	$AnimationPlayer.play("destroy")

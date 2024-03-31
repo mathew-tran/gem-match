@@ -7,7 +7,8 @@ var GemTypes = [
 	Definitions.GEM_TYPE.DIAMOND,
 	Definitions.GEM_TYPE.EMERALD,
 	Definitions.GEM_TYPE.TOPAZ,
-	Definitions.GEM_TYPE.RUBY
+	Definitions.GEM_TYPE.RUBY,
+	Definitions.GEM_TYPE.AQUAMARINE
 ]
 
 var GemAmount = 0
@@ -30,25 +31,24 @@ func PopulateGems():
 		for x in range(0, 5):
 			var instance = load("res://Prefab/GemPiece.tscn").instantiate()
 			instance.GemType = type
-			instance.global_position = Vector2(-1000, 0)
+			instance.global_position = Vector2(global_position.x - 250, 600)
 			add_child(instance)
 			Gems.append(instance)
 			GemAmount += 1
 
 
-func PopTopPiece():
+func PopTopPiece(bQuick = false):
 	var gem = Gems[0]
-	Gems[0].MoveToPosition(global_position + Vector2(16,16))
-	Gems[0].Setup()
+	Gems[0].MoveToPosition(global_position + Vector2(16,16), bQuick)
 	Gems[0].connect("Confirmed", Callable(self, "OnGemConfirmed"))
 	Gems[0].connect("Destroyed", Callable(self, "OnGemDestroyed"))
 	Gems.remove_at(0)
 	$Label.text = str(len(Gems))
 	return gem
 
-func SlotNextGemPiece():
+func SlotNextGemPiece(bQuick = false):
 	if len(Gems) > 0:
-		PopTopPiece()
+		PopTopPiece(bQuick)
 	else:
 		CheckGameOver()
 
@@ -76,12 +76,12 @@ func CheckGameOver():
 func StartTimer():
 	$Timer.start()
 
-func OnGemDestroyed(square):
+func OnGemDestroyed(_square):
 	GemAmount -= 1
 	if GemAmount == 0:
 		CheckGameOver()
 
-func OnGemConfirmed(square):
+func OnGemConfirmed(_square):
 	$SwitchLabel.visible = false
 	$Label.text = str(len(Gems))
 	$Timer.start()

@@ -14,6 +14,7 @@ var bEntered = false
 func _ready():
 	add_to_group("GRIDPIECE")
 	$AnimationPlayer.play("animIn")
+	$GridAnim.play("animSquare")
 
 func GetRow():
 	return Row
@@ -47,7 +48,7 @@ func _on_button_mouse_exited():
 func IsEmpty():
 	return GemRef == null
 
-func _on_area_2d_area_entered(area):
+func _on_area_2d_area_entered(_area):
 	OnEnter()
 
 func ShowSwitchableAreas(data):
@@ -56,19 +57,30 @@ func ShowSwitchableAreas(data):
 		switchArea[0].SetTransitionArrows(self, data)
 
 
-func _on_area_2d_area_exited(area):
+func _on_area_2d_area_exited(_area):
 	OnExit()
 
 func SlotInGem(gem, type = "slot"):
 	EnableSwitch(false)
 	$Highlight.visible = false
+	if is_instance_valid(GemRef):
+		GemRef.disconnect("Destroyed", Callable(self, "OnGemDestroyed"))
 	GemRef = gem
 	if is_instance_valid(GemRef):
 		GemRef.SetCollision(false)
 		GemRef.DisableGem()
-		gem.global_position = $GemPosition.global_position
+		var tween = get_tree().create_tween()
+		tween.tween_property(gem, "global_position", $GemPosition.global_position, .1)
+		tween.play()
+		modulate = Color.SILVER
+		GemRef.connect("Destroyed", Callable(self, "OnGemDestroyed"))
+	else:
+		modulate = Color.WHITE
 	if type == "slot":
 		emit_signal("Slotted", self)
+
+func OnGemDestroyed(_square):
+	modulate = Color.WHITE
 
 func GetString():
 	return "Row: " + str(Row) +", Column: " + str(Column)
@@ -79,7 +91,7 @@ func GetGemType():
 	return -1
 
 
-func _process(delta):
+func _process(_delta):
 	if bEntered == false:
 		return
 	if Game.bIsInSwitchMode:

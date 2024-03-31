@@ -33,7 +33,7 @@ func InitializeGrid():
 			gridSquare.Setup(row, column)
 			gridSquare.connect("Slotted", Callable(self, "OnGemPlaced"))
 			if gridSquare.IsPreAdd():
-				var gem = gemInventory.PopTopPiece()
+				var gem = gemInventory.PopTopPiece(true)
 				gem.bCanBePlaced = false
 				gem.DisableGem()
 				gridSquare.SlotInGem(gem, "auto")
