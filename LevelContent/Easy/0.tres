@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LevelResource" load_steps=2 format=3 uid="uid://dm7gqsj8k7o62"]
+[gd_resource type="Resource" script_class="LevelResource" load_steps=2 format=3 uid="uid://dlaeifqsagqh0"]
 
 [ext_resource type="Script" path="res://Scripts/ResourceTypes/LevelResource.gd" id="1_sf6sc"]
 
@@ -6,4 +6,4 @@
 script = ExtResource("1_sf6sc")
 BG = 0
 Music = 0
-LevelData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+LevelData = [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]

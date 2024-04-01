@@ -1,0 +1,63 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://ns6ytfqeewv0"]
+
+[ext_resource type="Texture2D" uid="uid://dvjydrilouff8" path="res://Art/UI/button.svg" id="1_rstmu"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sutrr"]
+load_path = "res://.godot/imported/button.svg-f175148834afe7e464c980d01691862e.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qgddu"]
+content_margin_left = 20.0
+content_margin_top = 0.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+texture = SubResource("CompressedTexture2D_sutrr")
+texture_margin_left = 70.0
+texture_margin_right = 70.0
+region_rect = Rect2(0, 0, 200, 100)
+modulate_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7ud56"]
+load_path = "res://.godot/imported/button.svg-f175148834afe7e464c980d01691862e.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fatnr"]
+content_margin_left = 20.0
+content_margin_top = 0.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+texture = SubResource("CompressedTexture2D_7ud56")
+texture_margin_left = 70.0
+texture_margin_right = 70.0
+region_rect = Rect2(0, 0, 200, 100)
+modulate_color = Color(0.819608, 0.819608, 0.819608, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_85bwo"]
+content_margin_left = 20.0
+content_margin_top = 0.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+texture = ExtResource("1_rstmu")
+texture_margin_left = 70.0
+texture_margin_right = 70.0
+region_rect = Rect2(0, 0, 200, 100)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1cjwh"]
+load_path = "res://.godot/imported/button.svg-f175148834afe7e464c980d01691862e.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qtgcb"]
+content_margin_left = 20.0
+content_margin_top = 0.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+texture = SubResource("CompressedTexture2D_1cjwh")
+texture_margin_left = 70.0
+texture_margin_right = 70.0
+region_rect = Rect2(0, 0, 200, 100)
+modulate_color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/fonts/font = null
+Button/styles/disabled = SubResource("StyleBoxTexture_qgddu")
+Button/styles/hover = SubResource("StyleBoxTexture_fatnr")
+Button/styles/normal = SubResource("StyleBoxTexture_85bwo")
+Button/styles/pressed = SubResource("StyleBoxTexture_qtgcb")

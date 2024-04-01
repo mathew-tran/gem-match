@@ -22,7 +22,7 @@ func CheckGrid():
 func InitializeGrid():
 	Width = len(get_children())
 	Height = len(get_child(0).get_children())
-	var data = load("res://LevelContent/Easy/1.tres") as LevelResource
+	var data = load(Game.GetStage()) as LevelResource
 
 	var dataIndex = 0
 	Game.SwitchAmount = 0

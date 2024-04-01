@@ -13,13 +13,28 @@ var bIsOver = false
 
 var Points = 0
 
+var Stages = [
+	"res://LevelContent/Easy/0.tres",
+	"res://LevelContent/Easy/1.tres",
+	"res://LevelContent/Easy/2.tres",
+	"res://LevelContent/Easy/3.tres",
+	"res://LevelContent/Easy/4.tres",
+	"res://LevelContent/Hard/1.tres",
+]
+
+var StageIndex = 0
+
 signal PointsAdded (amount)
+
+func GetStage():
+	return Stages[StageIndex]
 
 func Restart():
 	Points = 0
 	SwitchAmount = 0
 	bIsInSwitchMode = false
 	ResetSwitches()
+	StageIndex = 0
 
 func AddPoints(amount):
 	Points += amount
@@ -73,9 +88,15 @@ func HasSwitches():
 	return SwitchAmount > 0
 
 func BroadcastGameOver(bWin):
+	if bIsOver:
+		return
 	emit_signal("GameOver", bWin)
 	Game.BroadcastSwitchComplete()
 	bIsOver = true
+	if bWin:
+		StageIndex += 1
+		if StageIndex > len(Stages) - 1:
+			StageIndex -= 1
 
 func BroadcastSquareUnClicked(square):
 	if SquareA == square:

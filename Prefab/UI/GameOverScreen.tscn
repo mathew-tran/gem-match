@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://4nigwiqu5pha"]
+[gd_scene load_steps=5 format=3 uid="uid://4nigwiqu5pha"]
 
 [ext_resource type="Script" path="res://Prefab/UI/RestartButton.gd" id="1_gyprc"]
 [ext_resource type="Script" path="res://Scripts/UI/GameOverScreen.gd" id="1_lw0fo"]
+[ext_resource type="Theme" uid="uid://ns6ytfqeewv0" path="res://Themes/ButtonBasic.tres" id="2_f58ym"]
+[ext_resource type="Script" path="res://Scripts/UI/ContinueButton.gd" id="3_yaaib"]
 
 [node name="GameOverScreen" type="Panel"]
 anchors_preset = 15
@@ -31,10 +33,19 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "YOU WIN"
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Restart" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
-text = "RESTART"
+theme = ExtResource("2_f58ym")
+text = "RESTART "
 script = ExtResource("1_gyprc")
 
-[connection signal="button_up" from="VBoxContainer/Button" to="VBoxContainer/Button" method="_on_button_up"]
+[node name="Continue" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+theme = ExtResource("2_f58ym")
+text = "CONTINUE"
+script = ExtResource("3_yaaib")
+
+[connection signal="button_up" from="VBoxContainer/Restart" to="VBoxContainer/Restart" method="_on_button_up"]
+[connection signal="button_up" from="VBoxContainer/Continue" to="VBoxContainer/Continue" method="_on_button_up"]
