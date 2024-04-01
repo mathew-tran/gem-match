@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/GameOverScreen.gd" id="1_lw0fo"]
 [ext_resource type="Theme" uid="uid://ns6ytfqeewv0" path="res://Themes/ButtonBasic.tres" id="2_f58ym"]
 [ext_resource type="Script" path="res://Scripts/UI/ContinueButton.gd" id="3_yaaib"]
-[ext_resource type="Script" path="res://Scripts/UI/Back To Main Menu.gd" id="5_s2oxw"]
+[ext_resource type="PackedScene" uid="uid://bvdnpklhdrcfv" path="res://Prefab/UI/BackToMainMenu.tscn" id="5_d7wki"]
 
 [node name="GameOverScreen" type="Panel"]
 anchors_preset = 15
@@ -48,27 +48,8 @@ theme = ExtResource("2_f58ym")
 text = "CONTINUE"
 script = ExtResource("3_yaaib")
 
-[node name="Back To Main Menu" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(200, 80)
+[node name="Back To Main Menu" parent="VBoxContainer" instance=ExtResource("5_d7wki")]
 layout_mode = 2
-theme = ExtResource("2_f58ym")
-text = "BACK TO MAIN MENU"
-script = ExtResource("5_s2oxw")
-
-[node name="Timer" type="Timer" parent="VBoxContainer/Back To Main Menu"]
-one_shot = true
-
-[node name="Label" type="Label" parent="VBoxContainer/Back To Main Menu"]
-visible = false
-layout_mode = 0
-offset_top = -35.0
-offset_right = 260.0
-offset_bottom = 3.0
-text = "CLICK AGAIN"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="button_up" from="VBoxContainer/Restart" to="VBoxContainer/Restart" method="_on_button_up"]
 [connection signal="button_up" from="VBoxContainer/Continue" to="VBoxContainer/Continue" method="_on_button_up"]
-[connection signal="button_up" from="VBoxContainer/Back To Main Menu" to="VBoxContainer/Back To Main Menu" method="_on_button_up"]
-[connection signal="timeout" from="VBoxContainer/Back To Main Menu/Timer" to="VBoxContainer/Back To Main Menu" method="_on_timer_timeout"]

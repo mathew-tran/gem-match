@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0rs4x07hgr13"]
+
+[ext_resource type="Texture2D" uid="uid://wh6tlb7l6p85" path="res://Art/UI/OptionsButton.svg" id="1_xaorh"]
+[ext_resource type="Script" path="res://Scripts/UI/OptionsButton.gd" id="2_em16t"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b0sbl"]
+texture = ExtResource("1_xaorh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ji56y"]
+texture = ExtResource("1_xaorh")
+modulate_color = Color(0.792157, 0.792157, 0.792157, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_08sfn"]
+texture = ExtResource("1_xaorh")
+modulate_color = Color(0.380392, 0.380392, 0.380392, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0cfvw"]
+texture = ExtResource("1_xaorh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hsrui"]
+texture = ExtResource("1_xaorh")
+
+[node name="OptionsButton" type="Button"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -128.0
+offset_bottom = 128.0
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_b0sbl")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ji56y")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_08sfn")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_0cfvw")
+theme_override_styles/focus = SubResource("StyleBoxTexture_hsrui")
+script = ExtResource("2_em16t")
+
+[connection signal="button_up" from="." to="." method="_on_button_up"]

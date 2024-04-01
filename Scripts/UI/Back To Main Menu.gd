@@ -8,6 +8,7 @@ func _on_button_up():
 		$Timer.start()
 		$Label.visible = true
 	else:
+		Game.Restart()
 		get_tree().change_scene_to_file("res://Scenes/Title.tscn")
 
 

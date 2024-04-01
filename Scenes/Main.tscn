@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bom72s7pp1eku"]
+[gd_scene load_steps=25 format=3 uid="uid://bom72s7pp1eku"]
 
 [ext_resource type="PackedScene" uid="uid://csufmob2i3gat" path="res://Prefab/GridSquare.tscn" id="1_dmebl"]
 [ext_resource type="Script" path="res://Scripts/Level.gd" id="1_nsncq"]
@@ -12,6 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://v64lat60b010" path="res://Prefab/UI/SwitchIndicator.tscn" id="8_n4a0f"]
 [ext_resource type="Texture2D" uid="uid://bqu3yvl2munt1" path="res://Art/UI/selectnobgbase.svg" id="10_8vy54"]
 [ext_resource type="PackedScene" uid="uid://cgnehrj2v4dpa" path="res://Prefab/UI/PointsUI.tscn" id="11_n3wf3"]
+[ext_resource type="PackedScene" uid="uid://d0rs4x07hgr13" path="res://Prefab/UI/OptionsButton.tscn" id="13_j636d"]
+[ext_resource type="Script" path="res://Scripts/UI/PauseScreen.gd" id="14_byrv0"]
+[ext_resource type="Theme" uid="uid://ns6ytfqeewv0" path="res://Themes/ButtonBasic.tres" id="14_cpr7m"]
+[ext_resource type="Script" path="res://Scripts/UI/ResumeButton.gd" id="15_5r7im"]
+[ext_resource type="PackedScene" uid="uid://bvdnpklhdrcfv" path="res://Prefab/UI/BackToMainMenu.tscn" id="16_iqari"]
 
 [sub_resource type="Animation" id="Animation_gsyud"]
 length = 0.001
@@ -522,10 +527,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 566.0
-offset_top = 146.0
-offset_right = 1354.0
-offset_bottom = 934.0
+offset_left = -394.0
+offset_top = -394.0
+offset_right = 394.0
+offset_bottom = 394.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(394, 394)
@@ -718,6 +723,42 @@ layout_mode = 0
 texture = ExtResource("10_8vy54")
 
 [node name="Points" parent="CanvasLayer" instance=ExtResource("11_n3wf3")]
+
+[node name="OptionsButton" parent="CanvasLayer" instance=ExtResource("13_j636d")]
+
+[node name="PauseScreen" type="Panel" parent="CanvasLayer"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_byrv0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseScreen"]
+layout_mode = 0
+offset_left = 772.0
+offset_top = 450.0
+offset_right = 1179.0
+offset_bottom = 603.0
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="CanvasLayer/PauseScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/PauseScreen/VBoxContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+theme = ExtResource("14_cpr7m")
+text = "RESUME"
+script = ExtResource("15_5r7im")
+
+[node name="Back To Main Menu" parent="CanvasLayer/PauseScreen/VBoxContainer" instance=ExtResource("16_iqari")]
+layout_mode = 2
 
 [node name="UIDelay" type="Timer" parent="."]
 wait_time = 0.3

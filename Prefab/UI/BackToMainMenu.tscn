@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvdnpklhdrcfv"]
+
+[ext_resource type="Theme" uid="uid://ns6ytfqeewv0" path="res://Themes/ButtonBasic.tres" id="1_8o58g"]
+[ext_resource type="Script" path="res://Scripts/UI/Back To Main Menu.gd" id="2_n21la"]
+
+[node name="Back To Main Menu" type="Button"]
+custom_minimum_size = Vector2(200, 80)
+theme = ExtResource("1_8o58g")
+text = "BACK TO MAIN MENU"
+script = ExtResource("2_n21la")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_top = -35.0
+offset_right = 260.0
+offset_bottom = 3.0
+text = "CLICK AGAIN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
