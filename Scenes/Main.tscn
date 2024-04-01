@@ -728,6 +728,8 @@ texture = ExtResource("10_8vy54")
 
 [node name="PauseScreen" type="Panel" parent="CanvasLayer"]
 process_mode = 3
+z_index = 2
+z_as_relative = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
