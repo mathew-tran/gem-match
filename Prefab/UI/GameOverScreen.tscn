@@ -59,6 +59,7 @@ script = ExtResource("5_s2oxw")
 one_shot = true
 
 [node name="Label" type="Label" parent="VBoxContainer/Back To Main Menu"]
+visible = false
 layout_mode = 0
 offset_top = -35.0
 offset_right = 260.0
