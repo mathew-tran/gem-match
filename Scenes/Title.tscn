@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvxbnyuqps7mw"]
+[gd_scene load_steps=10 format=3 uid="uid://dvxbnyuqps7mw"]
 
 [ext_resource type="Texture2D" uid="uid://bj3tgbu3qwr08" path="res://Art/BG.svg" id="1_f3r7h"]
 [ext_resource type="Theme" uid="uid://ns6ytfqeewv0" path="res://Themes/ButtonBasic.tres" id="2_5hmao"]
+[ext_resource type="Texture2D" uid="uid://bhfepm0a6u04v" path="res://Art/Game/Pieces/Diamond.svg" id="2_b7n4v"]
+[ext_resource type="Texture2D" uid="uid://daqyry7lcu3rl" path="res://Art/Game/Pieces/emerald.svg" id="3_uhld3"]
 [ext_resource type="Script" path="res://Scripts/UI/PlayButton.gd" id="3_wtntn"]
+[ext_resource type="Texture2D" uid="uid://d3jpaofkqamwf" path="res://Art/Game/Pieces/ruby.svg" id="4_35dax"]
 [ext_resource type="Texture2D" uid="uid://dtyex83uj0oaa" path="res://Art/UI/Title.svg" id="4_rnaak"]
+[ext_resource type="Texture2D" uid="uid://b470jh2uoaftr" path="res://Art/Game/Pieces/topaz.svg" id="5_gpc3a"]
+[ext_resource type="Texture2D" uid="uid://8lplvpiagctj" path="res://Art/Game/Pieces/aquamarine.svg" id="6_pkl1f"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -12,6 +17,42 @@ modulate = Color(0.729412, 0.729412, 0.729412, 1)
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1_f3r7h")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = 1142.0
+offset_top = 337.0
+offset_right = 1270.0
+offset_bottom = 465.0
+texture = ExtResource("2_b7n4v")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+offset_left = 1015.0
+offset_top = 448.0
+offset_right = 1143.0
+offset_bottom = 576.0
+texture = ExtResource("3_uhld3")
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+offset_left = 838.0
+offset_top = 450.0
+offset_right = 966.0
+offset_bottom = 578.0
+texture = ExtResource("4_35dax")
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+offset_left = 656.0
+offset_top = 429.0
+offset_right = 784.0
+offset_bottom = 557.0
+texture = ExtResource("5_gpc3a")
+
+[node name="TextureRect6" type="TextureRect" parent="."]
+offset_left = 554.0
+offset_top = 297.0
+offset_right = 682.0
+offset_bottom = 425.0
+texture = ExtResource("6_pkl1f")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -49,5 +90,6 @@ offset_bottom = -116.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_rnaak")
+metadata/_edit_lock_ = true
 
 [connection signal="button_up" from="CanvasLayer/VBoxContainer/PlayButton" to="CanvasLayer/VBoxContainer/PlayButton" method="_on_button_up"]
