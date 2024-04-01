@@ -9,15 +9,23 @@ class_name LevelCreatorRoot
 @onready var Line = $HBoxContainer/VBoxContainer2/HBoxContainer4/LineEdit
 @onready var Dialog = $FileDialog
 var save_path = "res://LevelContent/Easy/1.tres"
-
+@onready var Brushes = $HBoxContainer/VBoxContainer2/HBoxContainer3/HBoxContainer
 func _ready():
 	add_to_group("LCCreator")
-	$HBoxContainer/VBoxContainer2/HBoxContainer3/BrushButton.connect("UpdateBrush", Callable(self, "OnUpdateBrush"))
+	for brush in Brushes.get_children():
+		brush.connect("UpdateBrush", Callable(self, "OnUpdateBrush"))
+	OnUpdateBrush(0)
 
 func OnUpdateBrush(index):
 	for row in Tiles.get_children():
 		for element in row.get_children():
 			element.InternalIndex = index
+
+	for brush in Brushes.get_children():
+		if brush.Index == index:
+			brush.disabled = true
+		else:
+			brush.disabled = false
 
 func Save():
 	var tiles = []
@@ -40,8 +48,6 @@ func GetFileName():
 
 func _on_load_button_button_up():
 	Dialog.popup_centered()
-
-
 
 func _on_new_button_button_up():
 	for row in Tiles.get_children():

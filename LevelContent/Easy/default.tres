@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LevelResource" load_steps=2 format=3 uid="uid://bkm6byj2cqamj"]
+
+[ext_resource type="Script" path="res://Scripts/ResourceTypes/LevelResource.gd" id="1_xqu6e"]
+
+[resource]
+script = ExtResource("1_xqu6e")
+BG = 0
+Music = 0
+LevelData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 6, 0, 0, 0, 0, 0, 6, 6, 0, 6, 0, 0, 0, 0, 6, 1, 1, 0, 0, 0, 1, 1, 1]

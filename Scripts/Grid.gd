@@ -22,12 +22,18 @@ func CheckGrid():
 func InitializeGrid():
 	Width = len(get_children())
 	Height = len(get_child(0).get_children())
-	var data = load("res://LevelContent/Hard/1.tres") as LevelResource
+	var data = load("res://LevelContent/Easy/1.tres") as LevelResource
+
 	var dataIndex = 0
 	Game.SwitchAmount = 0
 	Game.bIsInSwitchMode = false
 	Game.bIsOver = false
+
 	var gemInventory = get_tree().get_nodes_in_group("GEMINVENTORY")[0]
+
+	var internalIndex = 0
+
+
 	for row in range(0, len(get_children())):
 		for column in range(0, len(get_child(row).get_children())):
 			var gridSquare = get_child(row).get_child(column)
@@ -36,7 +42,7 @@ func InitializeGrid():
 
 			var gem = null
 			if data.LevelData[dataIndex] == LCDEFS.TYPES.RANDOM:
-				gem = gemInventory.PopTopPiece(true)
+				pass
 			else:
 				gem = gemInventory.GrabPiece(data.LevelData[dataIndex])
 			dataIndex += 1
@@ -44,6 +50,19 @@ func InitializeGrid():
 				gem.bCanBePlaced = false
 				gem.DisableGem()
 				gridSquare.SlotInGem(gem, "auto")
+
+	# Run through randoms last.
+	for row in range(0, len(get_children())):
+		for column in range(0, len(get_child(row).get_children())):
+			var gridSquare = get_child(row).get_child(column)
+			var gem = null
+			if data.LevelData[internalIndex] == LCDEFS.TYPES.RANDOM:
+				gem = gemInventory.PopTopPiece(true)
+			if gem != null:
+				gem.bCanBePlaced = false
+				gem.DisableGem()
+				gridSquare.SlotInGem(gem, "auto")
+			internalIndex += 1
 
 func IsPieceTheSameType(pieceA, pieceB):
 	if pieceA.GemRef == null:

@@ -68,8 +68,36 @@ layout_mode = 2
 text = "BRUSH
 "
 
-[node name="BrushButton" parent="HBoxContainer/VBoxContainer2/HBoxContainer3" instance=ExtResource("2_vgcad")]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/HBoxContainer3"]
 layout_mode = 2
+
+[node name="BrushButton" parent="HBoxContainer/VBoxContainer2/HBoxContainer3/HBoxContainer" instance=ExtResource("2_vgcad")]
+layout_mode = 2
+
+[node name="BrushButton2" parent="HBoxContainer/VBoxContainer2/HBoxContainer3/HBoxContainer" instance=ExtResource("2_vgcad")]
+layout_mode = 2
+Index = 1
+
+[node name="BrushButton3" parent="HBoxContainer/VBoxContainer2/HBoxContainer3/HBoxContainer" instance=ExtResource("2_vgcad")]
+layout_mode = 2
+Index = 2
+
+[node name="BrushButton4" parent="HBoxContainer/VBoxContainer2/HBoxContainer3/HBoxContainer" instance=ExtResource("2_vgcad")]
+layout_mode = 2
+Index = 3
+
+[node name="BrushButton5" parent="HBoxContainer/VBoxContainer2/HBoxContainer3/HBoxContainer" instance=ExtResource("2_vgcad")]
+layout_mode = 2
+Index = 4
+
+[node name="BrushButton6" parent="HBoxContainer/VBoxContainer2/HBoxContainer3/HBoxContainer" instance=ExtResource("2_vgcad")]
+layout_mode = 2
+Index = 5
+
+[node name="BrushButton7" parent="HBoxContainer/VBoxContainer2/HBoxContainer3/HBoxContainer" instance=ExtResource("2_vgcad")]
+layout_mode = 2
+text = "5"
+Index = 6
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2"]
 layout_mode = 2
