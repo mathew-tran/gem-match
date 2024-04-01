@@ -26,6 +26,7 @@ func InitializeGrid():
 	Height = len(get_child(0).get_children())
 	Game.SwitchAmount = 0
 	Game.bIsInSwitchMode = false
+	Game.bIsOver = false
 	var gemInventory = get_tree().get_nodes_in_group("GEMINVENTORY")[0]
 	for row in range(0, len(get_children())):
 		for column in range(0, len(get_child(row).get_children())):

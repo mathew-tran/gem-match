@@ -9,6 +9,10 @@ var SwitchAmount = 0
 var bIsInSwitchMode = false
 var SquareA = null
 var SquareB = null
+var bIsOver = false
+
+func IsGameOver():
+	return bIsOver
 
 func CheckGrid():
 	var grid = get_tree().get_nodes_in_group("GRID")
@@ -49,6 +53,7 @@ func HasSwitches():
 func BroadcastGameOver(bWin):
 	emit_signal("GameOver", bWin)
 	Game.BroadcastSwitchComplete()
+	bIsOver = true
 
 func BroadcastSquareUnClicked(square):
 	if SquareA == square:

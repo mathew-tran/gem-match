@@ -54,7 +54,7 @@ func SlotNextGemPiece(bQuick = false):
 
 
 func CheckGameOver():
-	if Game.HaveAllGemsBeenPlaced() == false:
+	if Game.HaveAllGemsBeenPlaced() == false or Game.IsGameOver():
 		return
 	StartTimer()
 	await $Timer.timeout
