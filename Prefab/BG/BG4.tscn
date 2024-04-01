@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://deh42ehgexkr7"]
+
+[ext_resource type="Texture2D" uid="uid://bhxxg4y1fuddn" path="res://Art/BGSpace.svg" id="1_u3gld"]
+[ext_resource type="Script" path="res://Scripts/BG.gd" id="2_4difx"]
+
+[node name="BG" type="TextureRect"]
+modulate = Color(0.729412, 0.729412, 0.729412, 1)
+offset_right = 1920.0
+offset_bottom = 1080.0
+pivot_offset = Vector2(0, 540)
+mouse_filter = 2
+texture = ExtResource("1_u3gld")
+script = ExtResource("2_4difx")

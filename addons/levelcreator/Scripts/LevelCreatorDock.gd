@@ -7,7 +7,9 @@ class_name LevelCreatorRoot
 
 @onready var Tiles = $HBoxContainer/VBoxContainer2/Tiles
 @onready var Line = $HBoxContainer/VBoxContainer2/HBoxContainer4/LineEdit
+
 @onready var Dialog = $FileDialog
+@onready var BGLabel = $HBoxContainer/VBoxContainer2/HBoxContainer2/BgRef
 var save_path = "res://LevelContent/Easy/1.tres"
 @onready var Brushes = $HBoxContainer/VBoxContainer2/HBoxContainer3/HBoxContainer
 func _ready():
@@ -35,7 +37,7 @@ func Save():
 
 	var data = LevelResource.new()
 	data.LevelData = tiles
-
+	data.BG = BGLabel.text
 
 	var file = ResourceSaver.save(data, GetFileName())
 
@@ -66,10 +68,18 @@ func _on_file_dialog_file_selected(path):
 	var save_path = GetFileName()
 	if FileAccess.file_exists(save_path):
 		var data = load(save_path) as LevelResource
-
+		BGLabel.text =  data.BG
 		var tiles = data.LevelData
 		var index = 0
 		for row in Tiles.get_children():
 			for element in row.get_children():
 				element.SetIndex(tiles[index])
 				index += 1
+
+
+func _on_button_button_up():
+	$FileDialogueBG.popup_centered()
+
+
+func _on_file_dialogue_bg_file_selected(path):
+	BGLabel.text = path

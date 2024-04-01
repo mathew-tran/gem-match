@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_h1j77")
-BG = 0
+BG = "res://Prefab/BG/BG2.tscn"
 Music = 0
 LevelData = [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0]

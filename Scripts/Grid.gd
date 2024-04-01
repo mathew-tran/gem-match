@@ -70,12 +70,7 @@ func InitializeGrid():
 
 	await get_tree().create_timer(1.0).timeout
 	var bgToLoad = ""
-	if data.BG == 0:
-		bgToLoad = "res://Prefab/BG/BG0.tscn"
-	else:
-		bgToLoad = "res://Prefab/BG/BG1.tscn"
-
-	var instance = load(bgToLoad).instantiate()
+	var instance = load(data.BG).instantiate()
 	instance.z_index = -1
 	instance.z_as_relative = false
 	get_parent().add_child(instance)

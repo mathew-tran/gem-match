@@ -119,6 +119,13 @@ layout_mode = 2
 layout_mode = 2
 text = "BG: "
 
+[node name="BgRef" type="Label" parent="HBoxContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+text = "Choose"
+
 [node name="Tiles" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 
@@ -256,8 +263,17 @@ ok_button_text = "Open"
 file_mode = 0
 root_subfolder = "LevelContent"
 
+[node name="FileDialogueBG" type="FileDialog" parent="."]
+title = "Open a File"
+size = Vector2i(500, 500)
+ok_button_text = "Open"
+file_mode = 0
+root_subfolder = "Prefab/BG"
+
 [connection signal="button_up" from="HBoxContainer/VBoxContainer/NewButton" to="." method="_on_new_button_button_up"]
 [connection signal="button_up" from="HBoxContainer/VBoxContainer/SaveButton" to="." method="_on_save_button_button_up"]
 [connection signal="button_up" from="HBoxContainer/VBoxContainer/LoadButton" to="." method="_on_load_button_button_up"]
+[connection signal="button_up" from="HBoxContainer/VBoxContainer2/HBoxContainer2/Button" to="." method="_on_button_button_up"]
 [connection signal="confirmed" from="FileDialog" to="." method="_on_file_dialog_confirmed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="file_selected" from="FileDialogueBG" to="." method="_on_file_dialogue_bg_file_selected"]

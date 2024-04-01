@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxpuv18legdym"]
 
-[ext_resource type="Texture2D" uid="uid://bj3tgbu3qwr08" path="res://Art/BG.svg" id="1_bs4wh"]
+[ext_resource type="Texture2D" uid="uid://jx526j5b7p5w" path="res://Art/BGSunset.svg" id="1_dhpi4"]
 [ext_resource type="Script" path="res://Scripts/BG.gd" id="2_ujyye"]
 
 [node name="BG" type="TextureRect"]
@@ -9,5 +9,5 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 pivot_offset = Vector2(0, 540)
 mouse_filter = 2
-texture = ExtResource("1_bs4wh")
+texture = ExtResource("1_dhpi4")
 script = ExtResource("2_ujyye")
