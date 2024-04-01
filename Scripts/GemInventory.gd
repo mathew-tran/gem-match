@@ -46,6 +46,24 @@ func PopTopPiece(bQuick = false):
 	$Label.text = str(len(Gems))
 	return gem
 
+func GrabPiece(gemType):
+	if gemType == LCDEFS.TYPES.EMPTY:
+		return null
+
+	var gemToGrab = null
+	var index = 0
+	for gem in Gems:
+		if gem.GemType == gemType:
+			gemToGrab = gem
+			break
+		index +=1
+	gemToGrab.MoveToPosition(global_position + Vector2(16,16), true)
+	gemToGrab.connect("Confirmed", Callable(self, "OnGemConfirmed"))
+	gemToGrab.connect("Destroyed", Callable(self, "OnGemDestroyed"))
+	Gems.remove_at(index)
+	$Label.text = str(len(Gems))
+	return gemToGrab
+
 func SlotNextGemPiece(bQuick = false):
 	if len(Gems) > 0:
 		PopTopPiece(bQuick)

@@ -24,6 +24,8 @@ func CheckGrid():
 func InitializeGrid():
 	Width = len(get_children())
 	Height = len(get_child(0).get_children())
+	var data = load("res://LevelContent/Hard/1.tres") as LevelResource
+	var dataIndex = 0
 	Game.SwitchAmount = 0
 	Game.bIsInSwitchMode = false
 	Game.bIsOver = false
@@ -33,8 +35,14 @@ func InitializeGrid():
 			var gridSquare = get_child(row).get_child(column)
 			gridSquare.Setup(row, column)
 			gridSquare.connect("Slotted", Callable(self, "OnGemPlaced"))
-			if gridSquare.IsPreAdd():
-				var gem = gemInventory.PopTopPiece(true)
+
+			var gem = null
+			if data.LevelData[dataIndex] == LCDEFS.TYPES.RANDOM:
+				gem = gemInventory.PopTopPiece(true)
+			else:
+				gem = gemInventory.GrabPiece(data.LevelData[dataIndex])
+			dataIndex += 1
+			if gem != null:
 				gem.bCanBePlaced = false
 				gem.DisableGem()
 				gridSquare.SlotInGem(gem, "auto")
