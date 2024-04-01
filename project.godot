@@ -63,3 +63,7 @@ escape={
 
 2d_physics/layer_1="Gem"
 2d_physics/layer_2="GemSlot"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

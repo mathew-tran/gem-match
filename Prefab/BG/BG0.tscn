@@ -1,0 +1,149 @@
+[gd_scene load_steps=5 format=3 uid="uid://buvgkx3ar8t3s"]
+
+[ext_resource type="Texture2D" uid="uid://bj3tgbu3qwr08" path="res://Art/BG.svg" id="1_3rc0t"]
+[ext_resource type="Script" path="res://Scripts/BG.gd" id="2_gb4xg"]
+[ext_resource type="Texture2D" uid="uid://hc65ya0y3p3b" path="res://Art/cloud1.svg" id="3_gwcoh"]
+[ext_resource type="Texture2D" uid="uid://c00wyavasgy5s" path="res://Art/cloud2.svg" id="4_xc4pf"]
+
+[node name="BG" type="TextureRect"]
+modulate = Color(0.729412, 0.729412, 0.729412, 1)
+offset_right = 1920.0
+offset_bottom = 1080.0
+pivot_offset = Vector2(0, 540)
+mouse_filter = 2
+texture = ExtResource("1_3rc0t")
+script = ExtResource("2_gb4xg")
+
+[node name="Clouds" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Clouds"]
+position = Vector2(71, 61)
+texture = ExtResource("3_gwcoh")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Clouds"]
+position = Vector2(0, 298)
+texture = ExtResource("3_gwcoh")
+
+[node name="Sprite2D27" type="Sprite2D" parent="Clouds"]
+position = Vector2(1813, 610)
+texture = ExtResource("3_gwcoh")
+
+[node name="Sprite2D28" type="Sprite2D" parent="Clouds"]
+position = Vector2(1449, 820)
+texture = ExtResource("3_gwcoh")
+
+[node name="Sprite2D29" type="Sprite2D" parent="Clouds"]
+position = Vector2(1701, 841)
+texture = ExtResource("3_gwcoh")
+
+[node name="Sprite2D30" type="Sprite2D" parent="Clouds"]
+position = Vector2(155, 819)
+texture = ExtResource("3_gwcoh")
+
+[node name="Sprite2D31" type="Sprite2D" parent="Clouds"]
+position = Vector2(155, 819)
+texture = ExtResource("3_gwcoh")
+
+[node name="Sprite2D32" type="Sprite2D" parent="Clouds"]
+position = Vector2(831, 65)
+texture = ExtResource("3_gwcoh")
+
+[node name="Sprite2D33" type="Sprite2D" parent="Clouds"]
+position = Vector2(1594, 287)
+texture = ExtResource("3_gwcoh")
+
+[node name="Sprite2D14" type="Sprite2D" parent="Clouds"]
+position = Vector2(383, 175)
+texture = ExtResource("3_gwcoh")
+
+[node name="Sprite2D15" type="Sprite2D" parent="Clouds"]
+position = Vector2(1613, 410)
+texture = ExtResource("3_gwcoh")
+
+[node name="Sprite2D16" type="Sprite2D" parent="Clouds"]
+position = Vector2(1177, 144)
+texture = ExtResource("3_gwcoh")
+
+[node name="Sprite2D17" type="Sprite2D" parent="Clouds"]
+position = Vector2(1886, 475)
+texture = ExtResource("3_gwcoh")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Clouds"]
+position = Vector2(714, 217)
+texture = ExtResource("3_gwcoh")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Clouds"]
+position = Vector2(714, 217)
+texture = ExtResource("3_gwcoh")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Clouds"]
+position = Vector2(63, 101)
+texture = ExtResource("4_xc4pf")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Clouds"]
+position = Vector2(1487, 146)
+texture = ExtResource("4_xc4pf")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Clouds"]
+position = Vector2(1427, 381)
+texture = ExtResource("4_xc4pf")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Clouds"]
+position = Vector2(1830, 215)
+texture = ExtResource("4_xc4pf")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Clouds"]
+position = Vector2(1689, 31)
+texture = ExtResource("4_xc4pf")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Clouds"]
+position = Vector2(1047, 18)
+texture = ExtResource("4_xc4pf")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Clouds"]
+position = Vector2(468, 5)
+texture = ExtResource("4_xc4pf")
+
+[node name="Sprite2D12" type="Sprite2D" parent="Clouds"]
+position = Vector2(101, 356)
+texture = ExtResource("4_xc4pf")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Clouds"]
+position = Vector2(403, 427)
+texture = ExtResource("4_xc4pf")
+
+[node name="Sprite2D18" type="Sprite2D" parent="Clouds"]
+position = Vector2(45, 605)
+texture = ExtResource("4_xc4pf")
+
+[node name="Sprite2D19" type="Sprite2D" parent="Clouds"]
+position = Vector2(351, 756)
+texture = ExtResource("4_xc4pf")
+
+[node name="Sprite2D20" type="Sprite2D" parent="Clouds"]
+position = Vector2(50, 765)
+texture = ExtResource("4_xc4pf")
+
+[node name="Sprite2D21" type="Sprite2D" parent="Clouds"]
+position = Vector2(1590, 750)
+texture = ExtResource("4_xc4pf")
+
+[node name="Sprite2D22" type="Sprite2D" parent="Clouds"]
+position = Vector2(1397, 545)
+texture = ExtResource("4_xc4pf")
+
+[node name="Sprite2D23" type="Sprite2D" parent="Clouds"]
+position = Vector2(1840, 747)
+texture = ExtResource("4_xc4pf")
+
+[node name="Sprite2D26" type="Sprite2D" parent="Clouds"]
+position = Vector2(286, 563)
+texture = ExtResource("4_xc4pf")
+
+[node name="Sprite2D24" type="Sprite2D" parent="Clouds"]
+position = Vector2(1071, 807)
+texture = ExtResource("4_xc4pf")
+
+[node name="Sprite2D25" type="Sprite2D" parent="Clouds"]
+position = Vector2(1071, 807)
+texture = ExtResource("4_xc4pf")

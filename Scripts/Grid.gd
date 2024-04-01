@@ -64,6 +64,22 @@ func InitializeGrid():
 				gridSquare.SlotInGem(gem, "auto")
 			internalIndex += 1
 
+	Game.CheckGrid()
+	while Game.IsGridBeingChecked():
+		await get_tree().process_frame
+
+	await get_tree().create_timer(1.0).timeout
+	var bgToLoad = ""
+	if data.BG == 0:
+		bgToLoad = "res://Prefab/BG/BG0.tscn"
+	else:
+		bgToLoad = "res://Prefab/BG/BG1.tscn"
+
+	var instance = load(bgToLoad).instantiate()
+	instance.z_index = -1
+	instance.z_as_relative = false
+	get_parent().add_child(instance)
+
 func IsPieceTheSameType(pieceA, pieceB):
 	if pieceA.GemRef == null:
 		return false
