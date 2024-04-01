@@ -9,4 +9,4 @@ func _enter_tree():
 func _ready():
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "scale", Vector2(1,1), .4)
-	tween.tween_property(self, "modulate:a", 1, .6)
+	tween.tween_property(self, "modulate:a", 1, .1)
