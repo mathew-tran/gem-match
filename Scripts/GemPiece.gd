@@ -49,7 +49,7 @@ func _process(_delta):
 		return
 
 	if bIsDragged:
-		global_position = get_global_mouse_position() - Vector2(32,32)
+		global_position = get_global_mouse_position() - Vector2(48,48)
 
 	if Input.is_action_just_released("click"):
 		bIsDragged = false
