@@ -3,25 +3,49 @@
 extends Button
 
 
-enum TYPES {
-	EMPTY,
-	GEM_1,
-	GEM_2,
-	GEM_3,
-	GEM_4,
-	GEM_5,
-	RANDOM
-}
 
-var Index = TYPES.EMPTY
 
-func _on_button_up():
+var Index = LCDEFS.TYPES.EMPTY
+
+var bIsHovered = false
+
+var InternalIndex = LCDEFS.TYPES.EMPTY
+
+func _on_pressed():
+	Increment()
+
+func Increment():
+
 	Index += 1
-	if Index > len(TYPES.keys()) - 1:
+	if Index > len(LCDEFS.TYPES.keys()) - 1:
 		Index = 0
 
-	if Index == TYPES.RANDOM:
+	if Index == LCDEFS.TYPES.RANDOM:
 		text = "R"
 	else:
-		text = Index
+		text = str(Index)
+	release_focus()
 
+func SetIndex(index):
+	Index = index
+	if Index == LCDEFS.TYPES.RANDOM:
+		text = "R"
+	else:
+		text = str(Index)
+
+func _input(event):
+	if is_visible_in_tree():
+		if bIsHovered:
+			#print("hover hit")
+			if event.is_action_pressed("ui_accept", true):
+				SetIndex(InternalIndex)
+func _on_mouse_entered():
+	bIsHovered = true
+	#print("test")
+	pass # Replace with function body.
+
+
+func _on_mouse_exited():
+	bIsHovered = false
+	#print("test out")
+	pass # Replace with function body.

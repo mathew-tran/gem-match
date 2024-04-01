@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://xkdlpkmnadcx"]
+[gd_scene load_steps=4 format=3 uid="uid://xkdlpkmnadcx"]
 
+[ext_resource type="Script" path="res://addons/levelcreator/Scripts/LevelCreatorDock.gd" id="1_jj1ps"]
 [ext_resource type="PackedScene" uid="uid://cd20v5he2qbj2" path="res://addons/levelcreator/Scenes/GridButton.tscn" id="1_rrjpi"]
+[ext_resource type="PackedScene" uid="uid://cghuogdsll3vr" path="res://addons/levelcreator/Scenes/Brushbutton.tscn" id="2_vgcad"]
 
 [node name="LevelCreatorDock" type="Control"]
 layout_mode = 3
@@ -9,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_jj1ps")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -40,6 +43,17 @@ layout_mode = 2
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+text = "BRUSH
+"
+
+[node name="BrushButton" parent="HBoxContainer/VBoxContainer2/HBoxContainer3" instance=ExtResource("2_vgcad")]
+layout_mode = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 
@@ -54,131 +68,131 @@ layout_mode = 2
 layout_mode = 2
 text = "BG: "
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2"]
+[node name="Tiles" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/Tiles"]
 layout_mode = 2
 
-[node name="Button" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer" instance=ExtResource("1_rrjpi")]
+[node name="Button" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button2" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer" instance=ExtResource("1_rrjpi")]
+[node name="Button2" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button3" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer" instance=ExtResource("1_rrjpi")]
+[node name="Button3" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button4" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer" instance=ExtResource("1_rrjpi")]
+[node name="Button4" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button5" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer" instance=ExtResource("1_rrjpi")]
+[node name="Button5" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button6" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer" instance=ExtResource("1_rrjpi")]
+[node name="Button6" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/Tiles"]
 layout_mode = 2
 
-[node name="Button" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer2" instance=ExtResource("1_rrjpi")]
+[node name="Button" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer2" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button2" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer2" instance=ExtResource("1_rrjpi")]
+[node name="Button2" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer2" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button3" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer2" instance=ExtResource("1_rrjpi")]
+[node name="Button3" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer2" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button4" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer2" instance=ExtResource("1_rrjpi")]
+[node name="Button4" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer2" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button5" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer2" instance=ExtResource("1_rrjpi")]
+[node name="Button5" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer2" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button6" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer2" instance=ExtResource("1_rrjpi")]
+[node name="Button6" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer2" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/Tiles"]
 layout_mode = 2
 
-[node name="Button" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer3" instance=ExtResource("1_rrjpi")]
+[node name="Button" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer3" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button2" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer3" instance=ExtResource("1_rrjpi")]
+[node name="Button2" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer3" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button3" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer3" instance=ExtResource("1_rrjpi")]
+[node name="Button3" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer3" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button4" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer3" instance=ExtResource("1_rrjpi")]
+[node name="Button4" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer3" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button5" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer3" instance=ExtResource("1_rrjpi")]
+[node name="Button5" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer3" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button6" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer3" instance=ExtResource("1_rrjpi")]
+[node name="Button6" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer3" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/VBoxContainer"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/Tiles"]
 layout_mode = 2
 
-[node name="Button" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer4" instance=ExtResource("1_rrjpi")]
+[node name="Button" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer4" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button2" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer4" instance=ExtResource("1_rrjpi")]
+[node name="Button2" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer4" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button3" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer4" instance=ExtResource("1_rrjpi")]
+[node name="Button3" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer4" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button4" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer4" instance=ExtResource("1_rrjpi")]
+[node name="Button4" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer4" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button5" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer4" instance=ExtResource("1_rrjpi")]
+[node name="Button5" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer4" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button6" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer4" instance=ExtResource("1_rrjpi")]
+[node name="Button6" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer4" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/VBoxContainer"]
+[node name="HBoxContainer5" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/Tiles"]
 layout_mode = 2
 
-[node name="Button" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer5" instance=ExtResource("1_rrjpi")]
+[node name="Button" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer5" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button2" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer5" instance=ExtResource("1_rrjpi")]
+[node name="Button2" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer5" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button3" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer5" instance=ExtResource("1_rrjpi")]
+[node name="Button3" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer5" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button4" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer5" instance=ExtResource("1_rrjpi")]
+[node name="Button4" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer5" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button5" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer5" instance=ExtResource("1_rrjpi")]
+[node name="Button5" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer5" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button6" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer5" instance=ExtResource("1_rrjpi")]
+[node name="Button6" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer5" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="HBoxContainer6" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/VBoxContainer"]
+[node name="HBoxContainer6" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/Tiles"]
 layout_mode = 2
 
-[node name="Button" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer6" instance=ExtResource("1_rrjpi")]
+[node name="Button" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer6" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button2" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer6" instance=ExtResource("1_rrjpi")]
+[node name="Button2" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer6" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button3" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer6" instance=ExtResource("1_rrjpi")]
+[node name="Button3" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer6" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button4" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer6" instance=ExtResource("1_rrjpi")]
+[node name="Button4" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer6" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button5" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer6" instance=ExtResource("1_rrjpi")]
+[node name="Button5" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer6" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
 
-[node name="Button6" parent="HBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer6" instance=ExtResource("1_rrjpi")]
+[node name="Button6" parent="HBoxContainer/VBoxContainer2/Tiles/HBoxContainer6" instance=ExtResource("1_rrjpi")]
 layout_mode = 2
