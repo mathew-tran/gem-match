@@ -14,11 +14,9 @@ func _ready():
 
 func CheckGrid():
 	bIsCheckingGrid = true
-	print("==========GRID TEST")
 	for row in range(0, len(get_children())):
 		for column in range(0, len(get_child(row).get_children())):
 			OnSquareCheck(get_child(row).get_child(column))
-	print("==========GRID TEST END")
 	bIsCheckingGrid = false
 
 func InitializeGrid():
@@ -95,11 +93,9 @@ func OnGemPlaced(gridPiece):
 func OnSquareCheck(gridPiece):
 	CheckRow(gridPiece)
 	CheckColumn(gridPiece)
-	print("CompleteCheck")
 	emit_signal("CompleteCheck")
 
 func CheckRow(gridPiece):
-	print("Checking Row..")
 	var consecutive = []
 	var consecutiveType = Definitions.GEM_TYPE.NONE
 	for gridSquare in get_child(gridPiece.GetRow()).get_children():
@@ -119,7 +115,6 @@ func CheckRow(gridPiece):
 				consecutiveType = gridSquare.GetGemType()
 
 func CheckColumn(gridPiece):
-	print("Checking Column..")
 	var consecutive = []
 	var consecutiveType = Definitions.GEM_TYPE.NONE
 	for column in get_children():

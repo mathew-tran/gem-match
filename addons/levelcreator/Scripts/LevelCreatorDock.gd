@@ -15,7 +15,6 @@ func _ready():
 	$HBoxContainer/VBoxContainer2/HBoxContainer3/BrushButton.connect("UpdateBrush", Callable(self, "OnUpdateBrush"))
 
 func OnUpdateBrush(index):
-	print("brushUpdate")
 	for row in Tiles.get_children():
 		for element in row.get_children():
 			element.InternalIndex = index
@@ -63,7 +62,6 @@ func _on_file_dialog_file_selected(path):
 		var data = load(save_path) as LevelResource
 
 		var tiles = data.LevelData
-		print(tiles)
 		var index = 0
 		for row in Tiles.get_children():
 			for element in row.get_children():

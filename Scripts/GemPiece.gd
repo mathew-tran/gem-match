@@ -67,7 +67,6 @@ func _process(_delta):
 				RevertToInitialPosition()
 
 func RevertToInitialPosition():
-	print(InitialPosition)
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "global_position", InitialPosition, .1)
 	tween.play()

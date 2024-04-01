@@ -106,7 +106,6 @@ func OnGemConfirmed(_square):
 	await $Timer.timeout
 	while Game.IsGridBeingChecked():
 		await get_tree().process_frame
-	print("grid check complete")
 	if Game.HasSwitches() and Game.DoGemsExist():
 		Game.bIsInSwitchMode = true
 		$SwitchLabel.visible = true

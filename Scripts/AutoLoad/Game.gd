@@ -20,7 +20,6 @@ func CheckGrid():
 		grid[0].CheckGrid()
 
 func IsGridBeingChecked():
-	print("=======waiting on grid")
 	var grid = get_tree().get_nodes_in_group("GRID")
 	if grid:
 		return grid[0].bIsCheckingGrid

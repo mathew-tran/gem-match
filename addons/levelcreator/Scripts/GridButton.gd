@@ -36,16 +36,11 @@ func SetIndex(index):
 func _input(event):
 	if is_visible_in_tree():
 		if bIsHovered:
-			#print("hover hit")
 			if event.is_action_pressed("ui_accept", true):
 				SetIndex(InternalIndex)
 func _on_mouse_entered():
 	bIsHovered = true
-	#print("test")
-	pass # Replace with function body.
 
 
 func _on_mouse_exited():
 	bIsHovered = false
-	#print("test out")
-	pass # Replace with function body.
