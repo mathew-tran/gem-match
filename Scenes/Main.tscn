@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bom72s7pp1eku"]
+[gd_scene load_steps=12 format=3 uid="uid://bom72s7pp1eku"]
 
 [ext_resource type="PackedScene" uid="uid://csufmob2i3gat" path="res://Prefab/GridSquare.tscn" id="1_dmebl"]
 [ext_resource type="Texture2D" uid="uid://bj3tgbu3qwr08" path="res://Art/BG.svg" id="1_o2s0i"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/TransitionArrows.gd" id="8_mwxka"]
 [ext_resource type="PackedScene" uid="uid://v64lat60b010" path="res://Prefab/UI/SwitchIndicator.tscn" id="8_n4a0f"]
 [ext_resource type="Texture2D" uid="uid://bqu3yvl2munt1" path="res://Art/UI/selectnobgbase.svg" id="10_8vy54"]
+[ext_resource type="PackedScene" uid="uid://cgnehrj2v4dpa" path="res://Prefab/UI/PointsUI.tscn" id="11_n3wf3"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -308,10 +309,11 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="RemainingSlot" parent="CanvasLayer" instance=ExtResource("5_kaftd")]
-offset_left = 218.0
-offset_top = 497.0
-offset_right = 378.0
-offset_bottom = 657.0
+offset_left = 208.0
+offset_top = 717.0
+offset_right = 368.0
+offset_bottom = 877.0
+metadata/_edit_group_ = true
 
 [node name="GameOverScreen" parent="CanvasLayer" instance=ExtResource("7_vjuip")]
 visible = false
@@ -353,5 +355,7 @@ layout_mode = 0
 
 [node name="Switch" parent="CanvasLayer/TransitionArrow/SwitchMiddle" index="0"]
 texture = ExtResource("10_8vy54")
+
+[node name="Points" parent="CanvasLayer" instance=ExtResource("11_n3wf3")]
 
 [editable path="CanvasLayer/TransitionArrow/SwitchMiddle"]

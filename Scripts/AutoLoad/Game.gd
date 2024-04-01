@@ -11,6 +11,23 @@ var SquareA = null
 var SquareB = null
 var bIsOver = false
 
+var Points = 0
+
+signal PointsAdded (amount)
+
+func Restart():
+	Points = 0
+	SwitchAmount = 0
+	bIsInSwitchMode = false
+	ResetSwitches()
+
+func AddPoints(amount):
+	Points += amount
+	emit_signal("PointsAdded", amount)
+
+func GetPoints():
+	return Points
+
 func IsGameOver():
 	return bIsOver
 
@@ -92,7 +109,7 @@ func ResetSwitches():
 
 func BroadcastSwitchComplete():
 	emit_signal("SwitchComplete")
-
+	Game.AddPoints(50)
 	ResetSwitches()
 	SwitchAmount -= 1
 	if SwitchAmount > 0:

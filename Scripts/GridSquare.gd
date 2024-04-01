@@ -78,6 +78,7 @@ func SlotInGem(gem, type = "slot"):
 		modulate = Color.WHITE
 	if type == "slot":
 		emit_signal("Slotted", self)
+		Game.AddPoints(10)
 
 func OnGemDestroyed(_square):
 	modulate = Color.WHITE
