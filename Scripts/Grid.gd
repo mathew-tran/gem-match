@@ -9,7 +9,7 @@ var bIsCheckingGrid = true
 
 func _ready():
 	await get_tree().process_frame
-	InitializeGrid()
+
 	add_to_group("GRID")
 
 func CheckGrid():

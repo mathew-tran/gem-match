@@ -14,7 +14,7 @@ var bEntered = false
 func _ready():
 	add_to_group("GRIDPIECE")
 	$AnimationPlayer.play("animIn")
-	$GridAnim.play("animSquare")
+	#$GridAnim.play("animSquare")
 
 func GetRow():
 	return Row

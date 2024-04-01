@@ -36,6 +36,12 @@ func CheckGrid():
 	if grid:
 		grid[0].CheckGrid()
 
+func _input(event):
+	if event.is_action_pressed("restart"):
+		Restart()
+		if get_tree():
+			get_tree().reload_current_scene()
+
 func IsGridBeingChecked():
 	var grid = get_tree().get_nodes_in_group("GRID")
 	if grid:
