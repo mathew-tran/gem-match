@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dvxbnyuqps7mw"]
+[gd_scene load_steps=12 format=3 uid="uid://dvxbnyuqps7mw"]
 
 [ext_resource type="Texture2D" uid="uid://bj3tgbu3qwr08" path="res://Art/BG.svg" id="1_f3r7h"]
 [ext_resource type="Script" path="res://Scripts/UI/Title.gd" id="1_ierxt"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/PlayButton.gd" id="3_wtntn"]
 [ext_resource type="Texture2D" uid="uid://d3jpaofkqamwf" path="res://Art/Game/Pieces/ruby.svg" id="4_35dax"]
 [ext_resource type="Texture2D" uid="uid://dtyex83uj0oaa" path="res://Art/UI/Title.svg" id="4_rnaak"]
+[ext_resource type="PackedScene" uid="uid://wvpr04iarf0v" path="res://Prefab/UI/TapCircle.tscn" id="8_rrlyf"]
 
 [sub_resource type="Animation" id="Animation_i7emn"]
 length = 0.001
@@ -286,6 +287,8 @@ texture = ExtResource("4_35dax")
 [node name="TextureRect8" type="TextureRect" parent="CanvasLayer/HBoxContainer4"]
 layout_mode = 2
 texture = ExtResource("4_35dax")
+
+[node name="TapCircle" parent="CanvasLayer" instance=ExtResource("8_rrlyf")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

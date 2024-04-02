@@ -93,14 +93,8 @@ func GetGemType():
 		return GemRef.GemType
 	return -1
 
-func IsMobileEvent(event):
-	if event is InputEventScreenTouch:
-		return event.pressed == true
-	if event is InputEventScreenDrag:
-		return true
-
 func _input(event):
-	if (event.is_action_pressed("click") or IsMobileEvent(event)):
+	if (event.is_action_pressed("click") or Game.IsMobileEvent(event)):
 		cachedEvent = event
 	else:
 		cachedEvent = null

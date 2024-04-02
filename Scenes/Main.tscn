@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bom72s7pp1eku"]
+[gd_scene load_steps=24 format=3 uid="uid://bom72s7pp1eku"]
 
 [ext_resource type="PackedScene" uid="uid://csufmob2i3gat" path="res://Prefab/GridSquare.tscn" id="1_dmebl"]
 [ext_resource type="Script" path="res://Scripts/Level.gd" id="1_nsncq"]
@@ -12,8 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://d0rs4x07hgr13" path="res://Prefab/UI/OptionsButton.tscn" id="13_j636d"]
 [ext_resource type="Script" path="res://Scripts/UI/PauseScreen.gd" id="14_byrv0"]
 [ext_resource type="Theme" uid="uid://ns6ytfqeewv0" path="res://Themes/ButtonBasic.tres" id="14_cpr7m"]
+[ext_resource type="Script" path="res://Scripts/UI/StageLabel.gd" id="15_3u88j"]
 [ext_resource type="Script" path="res://Scripts/UI/ResumeButton.gd" id="15_5r7im"]
 [ext_resource type="PackedScene" uid="uid://bvdnpklhdrcfv" path="res://Prefab/UI/BackToMainMenu.tscn" id="16_iqari"]
+[ext_resource type="PackedScene" uid="uid://wvpr04iarf0v" path="res://Prefab/UI/TapCircle.tscn" id="16_lgm7q"]
 
 [sub_resource type="Animation" id="Animation_gsyud"]
 length = 0.001
@@ -539,10 +541,10 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="RemainingSlot" parent="CanvasLayer" instance=ExtResource("5_kaftd")]
-offset_left = 208.0
-offset_top = 717.0
-offset_right = 368.0
-offset_bottom = 877.0
+offset_left = 165.0
+offset_top = 424.0
+offset_right = 325.0
+offset_bottom = 584.0
 metadata/_edit_group_ = true
 
 [node name="TransitionArrow" type="Control" parent="CanvasLayer"]
@@ -553,6 +555,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("8_mwxka")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="SwitchRight" parent="CanvasLayer/TransitionArrow" instance=ExtResource("8_n4a0f")]
 layout_mode = 0
@@ -587,12 +591,11 @@ layout_mode = 0
 [node name="Switch" parent="CanvasLayer/TransitionArrow/SwitchMiddle" index="0"]
 texture = ExtResource("10_8vy54")
 
-[node name="Points" parent="CanvasLayer" instance=ExtResource("11_n3wf3")]
-
 [node name="OptionsButton" parent="CanvasLayer" instance=ExtResource("13_j636d")]
 
 [node name="PauseScreen" type="Panel" parent="CanvasLayer"]
 process_mode = 3
+visible = false
 z_index = 2
 z_as_relative = false
 anchors_preset = 15
@@ -629,6 +632,31 @@ layout_mode = 2
 
 [node name="GameOverScreen" parent="CanvasLayer" instance=ExtResource("7_vjuip")]
 visible = false
+
+[node name="Points" parent="CanvasLayer" instance=ExtResource("11_n3wf3")]
+z_index = 2
+z_as_relative = false
+offset_left = 9.0
+offset_top = 148.0
+offset_right = 309.0
+offset_bottom = 188.0
+
+[node name="StageLabel" type="Label" parent="CanvasLayer"]
+z_index = 2
+z_as_relative = false
+offset_left = 264.0
+offset_top = 57.0
+offset_right = 458.0
+offset_bottom = 126.0
+theme_override_font_sizes/font_size = 50
+text = "STAGE 1"
+script = ExtResource("15_3u88j")
+
+[node name="TapCircle" parent="CanvasLayer" instance=ExtResource("16_lgm7q")]
+offset_left = 63.9994
+offset_top = 63.9994
+offset_right = 63.9994
+offset_bottom = 63.9994
 
 [node name="UIDelay" type="Timer" parent="."]
 wait_time = 0.3

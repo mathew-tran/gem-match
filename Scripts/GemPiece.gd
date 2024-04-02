@@ -27,13 +27,6 @@ func _ready():
 	elif GemType == Definitions.GEM_TYPE.AQUAMARINE:
 		$Sprite2D.texture = Definitions.AquamarineTexture
 
-func IsMobileEvent(event):
-	if event is InputEventScreenTouch:
-		return event.pressed == true
-	if event is InputEventScreenDrag:
-		return true
-
-
 func MoveToPosition(newPosition, bQuick = true):
 	InitialPosition = newPosition
 	var tween = get_tree().create_tween()
@@ -46,7 +39,7 @@ func MoveToPosition(newPosition, bQuick = true):
 	$AnimationPlayer.play("animIn")
 
 func _input(event):
-	if (event.is_action_pressed("click") or IsMobileEvent(event)) and bCanBePlaced:
+	if (event.is_action_pressed("click") or Game.IsMobileEvent(event)) and bCanBePlaced:
 		cachedEvent = event
 	else:
 		cachedEvent = null
@@ -62,7 +55,7 @@ func _process(_delta):
 	if cachedEvent == null:
 		return
 
-	if bIsDragged and (IsMobileEvent(cachedEvent) or cachedEvent.is_action_pressed("click")):
+	if bIsDragged and (Game.IsMobileEvent(cachedEvent) or cachedEvent.is_action_pressed("click")):
 		var square = GetSquare()
 		if square == null:
 			pass
@@ -138,7 +131,7 @@ func _on_button_button_down():
 	if bCanBePlaced == false:
 		return
 
-	if bIsDragged == false and (IsMobileEvent(cachedEvent) or cachedEvent.is_action_pressed("click")):
+	if bIsDragged == false and (Game.IsMobileEvent(cachedEvent) or cachedEvent.is_action_pressed("click")):
 		await get_tree().create_timer(.1).timeout
 		bIsDragged = true
 		z_index = 1

@@ -36,7 +36,6 @@ var bIsGameOver = false
 
 signal PointsAdded (amount)
 
-
 func GetStage():
 	return Stages[StageIndex]
 
@@ -107,6 +106,12 @@ func HaveAllGemsBeenPlaced():
 func HasSwitches():
 	return SwitchAmount > 0
 
+func IsMobileEvent(event):
+	if event is InputEventScreenTouch:
+		return event.pressed == true
+	if event is InputEventScreenDrag:
+		return true
+
 func BroadcastGameOver(bWin):
 	if bIsOver:
 		return
@@ -117,6 +122,7 @@ func BroadcastGameOver(bWin):
 		StageIndex += 1
 		if StageIndex > len(Stages) - 1:
 			StageIndex -= 1
+			bIsGameOver = true
 	else:
 		bIsGameOver = true
 

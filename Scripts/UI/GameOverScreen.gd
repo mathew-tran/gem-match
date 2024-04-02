@@ -11,14 +11,14 @@ func OnGameOver(bHasWon):
 
 func ShowWin():
 	visible = true
-	$VBoxContainer/Label.text = "YOU WIN"
+	$VBoxContainer/Label.text = "STAGE COMPLETE"
 	$VBoxContainer/Restart.visible =false
 	pass
 
 
 func ShowLose():
 	visible = true
-	$VBoxContainer/Label.text = "YOU LOSE"
+	$VBoxContainer/Label.text = "GAME OVER"
 	$VBoxContainer/Continue.visible = false
 	pass
 
