@@ -32,8 +32,10 @@ var Stages = [
 ]
 
 var StageIndex = 0
+var bIsGameOver = false
 
 signal PointsAdded (amount)
+
 
 func GetStage():
 	return Stages[StageIndex]
@@ -44,8 +46,11 @@ func Restart():
 	bIsInSwitchMode = false
 	ResetSwitches()
 	StageIndex = 0
+	bIsGameOver = false
 
 func AddPoints(amount):
+	if bIsGameOver:
+		return
 	Points += amount
 	emit_signal("PointsAdded", amount)
 
@@ -112,6 +117,8 @@ func BroadcastGameOver(bWin):
 		StageIndex += 1
 		if StageIndex > len(Stages) - 1:
 			StageIndex -= 1
+	else:
+		bIsGameOver = true
 
 func BroadcastSquareUnClicked(square):
 	if SquareA == square:
