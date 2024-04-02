@@ -11,6 +11,8 @@ var bEntered = false
 
 @export var bPreAdd = false
 
+var cachedEvent = null
+
 func _ready():
 	add_to_group("GRIDPIECE")
 	$AnimationPlayer.play("animIn")
@@ -91,6 +93,17 @@ func GetGemType():
 		return GemRef.GemType
 	return -1
 
+func IsMobileEvent(event):
+	if event is InputEventScreenTouch:
+		return event.pressed == true
+	if event is InputEventScreenDrag:
+		return true
+
+func _input(event):
+	if (event.is_action_pressed("click") or IsMobileEvent(event)):
+		cachedEvent = event
+	else:
+		cachedEvent = null
 
 func _process(_delta):
 	if bEntered == false:

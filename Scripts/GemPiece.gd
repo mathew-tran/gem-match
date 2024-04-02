@@ -95,6 +95,7 @@ func ConfirmPlacement():
 func DisableGem():
 	$Sprite2D/Area2D/CollisionShape2D.disabled = true
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	$Sprite2D/Button.visible = false
 	$AnimationPlayer.play_backwards("placed")
 
 func GetSquare():

@@ -8,8 +8,9 @@ signal CompleteCheck
 var bIsCheckingGrid = true
 
 func _ready():
+	visible = false
 	await get_tree().process_frame
-
+	visible = true
 	add_to_group("GRID")
 
 func CheckGrid():
