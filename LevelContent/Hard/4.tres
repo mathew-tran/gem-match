@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LevelResource" load_steps=2 format=3 uid="uid://dwsj0uc4enod8"]
+
+[ext_resource type="Script" path="res://Scripts/ResourceTypes/LevelResource.gd" id="1_vmpnk"]
+
+[resource]
+script = ExtResource("1_vmpnk")
+BG = "res://Prefab/BG/BG3.tscn"
+Music = 0
+LevelData = [0, 0, 5, 5, 5, 0, 0, 5, 0, 2, 0, 5, 0, 1, 1, 2, 0, 0, 0, 0, 3, 0, 4, 0, 0, 0, 3, 3, 4, 0, 0, 0, 0, 0, 0, 0]

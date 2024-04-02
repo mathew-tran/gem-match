@@ -8,6 +8,21 @@
 [ext_resource type="Texture2D" uid="uid://d3jpaofkqamwf" path="res://Art/Game/Pieces/ruby.svg" id="4_35dax"]
 [ext_resource type="Texture2D" uid="uid://dtyex83uj0oaa" path="res://Art/UI/Title.svg" id="4_rnaak"]
 
+[sub_resource type="Animation" id="Animation_i7emn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Title:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_puaog"]
 resource_name = "titleAnim"
 loop_mode = 1
@@ -22,21 +37,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.349066, -0.349066, 0.20944, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_i7emn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Title:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0sxq8"]

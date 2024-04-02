@@ -14,12 +14,21 @@ var bIsOver = false
 var Points = 0
 
 var Stages = [
+
 	"res://LevelContent/Easy/0.tres",
 	"res://LevelContent/Easy/1.tres",
 	"res://LevelContent/Easy/2.tres",
 	"res://LevelContent/Easy/3.tres",
 	"res://LevelContent/Easy/4.tres",
+	"res://LevelContent/Easy/5.tres",
+	"res://LevelContent/Easy/6.tres",
+	"res://LevelContent/Easy/7.tres",
 	"res://LevelContent/Hard/1.tres",
+	"res://LevelContent/Hard/2.tres",
+	"res://LevelContent/Hard/3.tres",
+	"res://LevelContent/Hard/4.tres",
+	"res://LevelContent/Hard/5.tres",
+	"res://LevelContent/Hard/6.tres",
 ]
 
 var StageIndex = 0
@@ -119,6 +128,10 @@ func BroadcastSquareClicked(square):
 			SquareB.SlotInGem(squareAData, "switch")
 			await get_tree().process_frame
 			BroadcastSwitchComplete()
+
+func IncreaseSwitchAmount():
+	SwitchAmount += 1
+	Game.AddPoints(SwitchAmount * 250)
 
 func BroadcastGemCombined():
 	emit_signal("GemCombined")

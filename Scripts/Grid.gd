@@ -134,8 +134,7 @@ func CheckRow(gridPiece):
 					return
 				consecutive.append(gridSquare)
 				if len(consecutive) >= 5:
-					Game.AddPoints(100)
-					Game.SwitchAmount += 1
+					Game.IncreaseSwitchAmount()
 					Game.BroadcastGemCombined()
 					for grid in consecutive:
 						grid.GemRef.Destroy()
@@ -156,7 +155,7 @@ func CheckColumn(gridPiece):
 			consecutive.append(gridSquare)
 			if len(consecutive) >= 5:
 				Game.AddPoints(100)
-				Game.SwitchAmount += 1
+				Game.IncreaseSwitchAmount()
 				Game.BroadcastGemCombined()
 				for grid in consecutive:
 					grid.GemRef.Destroy()
