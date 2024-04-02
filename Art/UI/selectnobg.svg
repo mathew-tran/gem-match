@@ -23,36 +23,47 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
-     inkscape:zoom="3.9761067"
-     inkscape:cx="65.51635"
-     inkscape:cy="79.60048"
+     inkscape:zoom="2.811532"
+     inkscape:cx="67.934492"
+     inkscape:cy="69.179365"
      inkscape:window-width="1920"
      inkscape:window-height="992"
      inkscape:window-x="2125"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer1"
+     showgrid="false" />
   <defs
      id="defs1" />
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <rect
-       style="fill:none;stroke:#2e432f;stroke-width:1.59999997;stroke-dasharray:none"
-       id="rect1"
-       width="31.940792"
-       height="31.940792"
-       x="0.96293694"
-       y="0.96293694"
-       ry="2.6662638" />
-    <rect
-       style="fill:none;stroke:#f6e4c1;stroke-width:3.06069;stroke-dasharray:none;stroke-dashoffset:0;stroke-linejoin:round;stroke-linecap:square;marker-mid:"
-       id="rect2"
-       width="30.790783"
-       height="30.790783"
-       x="1.4349465"
-       y="1.4349465"
-       ry="2.5702665" />
+    <g
+       id="g5"
+       transform="matrix(0.68200836,0,0,0.68200836,5.3846587,5.3846587)">
+      <circle
+         style="fill:#2e432f;fill-opacity:0.501923;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round"
+         id="path4"
+         cx="16.933332"
+         cy="16.933332"
+         r="11.245722" />
+      <g
+         id="g4"
+         transform="translate(1.5875,0.52916639)">
+        <path
+           id="path2"
+           style="fill:#f6e4c1;stroke-width:0.0671349;stroke-linecap:square;stroke-linejoin:round"
+           d="m 10.123978,8.996133 -0.04163,1.400554 11.843648,7.315004 -12.257014,6.59929 -0.037469,1.263516 14.603644,-7.862806 z" />
+        <path
+           id="path1"
+           style="fill:#442831;stroke-width:0.0671349;stroke-linecap:square;stroke-linejoin:round"
+           d="m 10.123978,8.2921685 -0.04163,1.4005538 11.843647,7.3150037 -12.2570132,6.59929 -0.037469,1.263516 14.6036442,-7.862806 z" />
+        <path
+           id="path3"
+           style="fill:#f6e4c1;stroke-width:0.0671349;stroke-linecap:square;stroke-linejoin:round"
+           d="m 10.123978,7.2338351 -0.04163,1.4005538 11.843647,7.3150031 -12.2570132,6.59929 -0.037469,1.263516 14.6036442,-7.862806 z" />
+      </g>
+    </g>
   </g>
 </svg>

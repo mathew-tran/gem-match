@@ -40,7 +40,7 @@ func MoveToPosition(newPosition, bQuick = true):
 	if bQuick:
 		tween.tween_property(self, "global_position", newPosition, .1)
 	else:
-		tween.tween_property(self, "global_position", newPosition, .3)
+		tween.tween_property(self, "global_position", newPosition, .1)
 	tween.play()
 
 	$AnimationPlayer.play("animIn")
