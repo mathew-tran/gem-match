@@ -48,7 +48,6 @@ func MoveToPosition(newPosition, bQuick = true):
 func _input(event):
 	if (event.is_action_pressed("click") or IsMobileEvent(event)) and bCanBePlaced:
 		cachedEvent = event
-		print(cachedEvent)
 	else:
 		cachedEvent = null
 
@@ -144,3 +143,8 @@ func _on_button_button_down():
 		z_index = 1
 
 
+func _on_button_mouse_entered():
+	_on_mouse_entered()
+
+func _on_button_mouse_exited():
+	_on_mouse_exited()

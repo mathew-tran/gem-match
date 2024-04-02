@@ -39,7 +39,6 @@ func GetStage():
 	return Stages[StageIndex]
 
 func Restart():
-	Stages.shuffle()
 	Points = 0
 	SwitchAmount = 0
 	bIsInSwitchMode = false
