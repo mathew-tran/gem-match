@@ -11,6 +11,8 @@ signal Placed(square)
 signal Confirmed(square)
 signal Destroyed(square)
 
+var cachedEvent = null
+
 func _ready():
 	add_to_group("GEM")
 	InitialPosition = global_position
@@ -25,6 +27,13 @@ func _ready():
 	elif GemType == Definitions.GEM_TYPE.AQUAMARINE:
 		$Sprite2D.texture = Definitions.AquamarineTexture
 
+func IsMobileEvent(event):
+	if event is InputEventScreenTouch:
+		return event.pressed == true
+	if event is InputEventScreenDrag:
+		return true
+
+
 func MoveToPosition(newPosition, bQuick = true):
 	InitialPosition = newPosition
 	var tween = get_tree().create_tween()
@@ -36,13 +45,13 @@ func MoveToPosition(newPosition, bQuick = true):
 
 	$AnimationPlayer.play("animIn")
 
-
 func _input(event):
-	if bIsEntered == false or bCanBePlaced == false:
-		return
-	if event.is_action_pressed("click"):
-		bIsDragged = true
-		z_index = 1
+	if (event.is_action_pressed("click") or IsMobileEvent(event)) and bCanBePlaced:
+		cachedEvent = event
+		print(cachedEvent)
+	else:
+		cachedEvent = null
+
 
 func _process(_delta):
 	if bCanBePlaced == false:
@@ -51,12 +60,16 @@ func _process(_delta):
 	if bIsDragged:
 		global_position = get_global_mouse_position() - Vector2(48,48)
 
-	if Input.is_action_just_released("click"):
-		bIsDragged = false
+	if cachedEvent == null:
+		return
+
+	if bIsDragged and (IsMobileEvent(cachedEvent) or cachedEvent.is_action_pressed("click")):
 		var square = GetSquare()
 		if square == null:
-			RevertToInitialPosition()
+			pass
+			#RevertToInitialPosition()
 		else:
+			bIsDragged = false
 			if square.IsEmpty():
 				square.SlotInGem(self)
 				bCanBePlaced = false
@@ -64,7 +77,7 @@ func _process(_delta):
 				z_index = 0
 				modulate = Color.WHITE
 			else:
-				RevertToInitialPosition()
+				pass
 
 func RevertToInitialPosition():
 	var tween = get_tree().create_tween()
@@ -115,3 +128,19 @@ func _on_animation_player_animation_finished(anim_name):
 	if gemInventory:
 		gemInventory[0].StartTimer()
 	queue_free()
+
+
+func _on_button_button_up():
+	pass
+
+
+func _on_button_button_down():
+	if bCanBePlaced == false:
+		return
+
+	if bIsDragged == false and (IsMobileEvent(cachedEvent) or cachedEvent.is_action_pressed("click")):
+		await get_tree().create_timer(.1).timeout
+		bIsDragged = true
+		z_index = 1
+
+
