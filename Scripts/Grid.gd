@@ -19,6 +19,13 @@ func CheckGrid():
 			OnSquareCheck(get_child(row).get_child(column))
 	bIsCheckingGrid = false
 
+func IsGridEmpty():
+	for row in range(0, len(get_children())):
+		for column in range(0, len(get_child(row).get_children())):
+			if get_child(row).get_child(column).IsEmpty() == false:
+				return false
+	return true
+
 func InitializeGrid():
 	Width = len(get_children())
 	Height = len(get_child(0).get_children())

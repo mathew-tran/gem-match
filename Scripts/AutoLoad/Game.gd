@@ -60,6 +60,12 @@ func CheckGrid():
 	if grid:
 		grid[0].CheckGrid()
 
+func IsGridEmpty():
+	var grid = get_tree().get_nodes_in_group("GRID")
+	if grid:
+		return grid[0].IsGridEmpty()
+	return false
+
 func _input(event):
 	if event.is_action_pressed("restart"):
 		Restart()
